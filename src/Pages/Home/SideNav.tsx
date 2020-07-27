@@ -1,6 +1,21 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 
+const SideNavItem = ({ to, text }) => {
+  return (
+    <li style={{ listStyle: "none" }}>
+      <NavLink
+        to={to}
+        style={{
+          color: "white",
+          textDecoration: "none",
+        }}
+      >
+        {text}
+      </NavLink>
+    </li>
+  );
+};
 const SideNav = (props) => {
   return (
     <div
@@ -12,18 +27,10 @@ const SideNav = (props) => {
       }}
     >
       <ul className="list-group">
-        <li className="list-group-item">
-          <NavLink to={`/home/stats`}>Stats</NavLink>
-        </li>
-        <li className="list-group-item">
-          <NavLink to={`/home/quests`}>Quest Log</NavLink>
-        </li>
-        <li className="list-group-item">
-          <NavLink to={`/home/skills`}>Skills</NavLink>
-        </li>
-        <li className="list-group-item">
-          <NavLink to={`/`}>Title Screen</NavLink>
-        </li>
+        <SideNavItem to={"/home/stats"} text={"Stats"} />
+        <SideNavItem to={"/home/quests"} text={"Quest Log"} />
+        <SideNavItem to={"/home/skills"} text={"Skills"} />
+        <SideNavItem to={"/"} text={"Title Screen"} />
       </ul>
     </div>
   );

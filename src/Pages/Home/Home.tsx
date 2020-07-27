@@ -1,15 +1,10 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import InfoBox from "./InfoBox";
 import SideNav from "./SideNav";
-import Stats from "./Stats";
-import QuestLog from "./QuestLog";
-import Skills from "./Skills";
-import {
-  Route,
-  BrowserRouter as Router,
-  Switch,
-  Redirect,
-} from "react-router-dom";
+import Stats from "./Sections/Stats/Stats";
+import QuestLog from "./Sections/QuestLog";
+import Skills from "./Sections/Skills";
+import { Route, Redirect } from "react-router-dom";
 const GridContainer = ({ children }) => {
   return (
     <div
@@ -31,15 +26,27 @@ const Spacer = (props) => {
 };
 
 const Home = ({ match }) => {
-  console.log(match);
+  const [infoText, setInfoText] = useState("Great job");
   return (
     <GridContainer>
       <Spacer />
-      <InfoBox />
+      <InfoBox infoText={infoText} />
       <SideNav />
-      <Route path={`${match.path}/stats`} component={Stats} />
-      <Route path={`${match.path}/quests`} component={QuestLog} />
-      <Route path={`${match.path}/skills`} component={Skills} />
+      <Route
+        path={`${match.path}/stats`}
+        render={() => <Stats setInfoText={setInfoText} />}
+        activeClass={"active"}
+      />
+      <Route
+        path={`${match.path}/quests`}
+        render={() => <QuestLog setInfoText={setInfoText} />}
+        activeClass={"active"}
+      />
+      <Route
+        path={`${match.path}/skills`}
+        render={() => <Skills setInfoText={setInfoText} />}
+        activeClass={"active"}
+      />
       <Redirect to={`${match.path}/stats`} />
 
       <Spacer />
