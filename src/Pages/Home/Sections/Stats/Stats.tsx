@@ -1,48 +1,49 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import MainAreaBase from "../MainAreaBase";
 
 //TODO: Put this in a server layer;
-const characters: Character[] = [
-  {
-    name: "Ryan Giordano",
-    jobTitle: "Software Engineer, Quora",
-    email: "rgiordano@gmail.com",
-    level: 6,
-    links: [
-      {
-        iconUrl: "www.fake.com",
-        description: "Linkedin",
-        url: "www.also.com",
-      },
-    ],
-    phoneNumber: "404-234-3366",
-    skills: [],
-  },
-  {
-    name: "Lo Yang",
-    jobTitle: "Data Engineer, Facebook",
-    email: "loxgio@gmail.com",
-    level: 8,
-    links: [
-      {
-        iconUrl: "www.fake.com",
-        description: "Linkedin",
-        url: "www.also.com",
-      },
-    ],
-    phoneNumber: "404-234-3366",
-    skills: [],
-  },
-];
 
-const Stats = ({ setInfoText }: { setInfoText: (t: string) => void }) => {
+const Stats = ({
+  setInfoText,
+  characters,
+}: {
+  characters: Character[];
+  setInfoText: (t: string) => void;
+}) => {
   useEffect(() => {
     setInfoText("Stats");
   }, []);
+
+
   return (
     <MainAreaBase>
       {characters.map((c) => {
-        return <div key={c.name}>{c.name}</div>;
+        return (
+          <div
+            style={{
+              display: "grid",
+              gridGap: "1rem",
+              gridTemplateColumns: "1fr 2fr 3fr",
+              gridTemplateRows: "auto",
+            }}
+            key={c.name}
+          >
+            <div>
+              <img
+                style={{
+                  height: "100px",
+                }}
+                src={c.profilePicture}
+              />
+            </div>
+            <div>{c.name}</div>
+            <div>
+              {c.links.map((l) => {
+                return <a key={l.url}>{l.url}</a>;
+              })}
+            </div>
+          </div>
+        );
       })}
     </MainAreaBase>
   );

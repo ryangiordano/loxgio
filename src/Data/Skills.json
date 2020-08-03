@@ -1,0 +1,112 @@
+{
+  "1": {
+    "name": "JavaScript",
+    "type": "frontend",
+    "icon": "javascript.png"
+  },
+  "2": {
+    "name": "TypeScript",
+    "type": "frontend",
+    "icon": "typescript.png"
+  },
+  "3": {
+    "name": "PhaserJS",
+    "type": "frontend",
+    "icon": "typescript.png"
+  },
+  "4": {
+    "name": "Asana",
+    "type": "productivity",
+    "icon": "asana.png"
+  },
+  "5": {
+    "name": "NodeJS",
+    "type": "backend",
+    "icon": "node.png"
+  },
+  "6": {
+    "name": "Python",
+    "type": "backend",
+    "icon": "typescript.png"
+  },
+  "7": {
+    "name": "CSS",
+    "type": "frontend",
+    "icon": "css.png"
+  },
+  "8": {
+    "name": "Sass",
+    "type": "frontend",
+    "icon": "sass.png"
+  },
+  "9": {
+    "name": "C#",
+    "type": "backend",
+    "icon": "csharp.png"
+  },
+  "10": {
+    "name": "VueJS",
+    "type": "frontend",
+    "icon": "vue.png"
+  },
+  "11": {
+    "name": "Diaper Changing",
+    "type": "parenting",
+    "icon": "diaper.png"
+  },
+  "12": {
+    "name": "HTML",
+    "type": "frontend",
+    "icon": "html.png"
+  },
+  "13": {
+    "name": "React",
+    "type": "frontend",
+    "icon": "react.png"
+  },
+  "14": {
+    "name": "Hadoop",
+    "type": "data",
+    "icon": "hadoop.png"
+  },
+  "15": {
+    "name": "Tableau",
+    "type": "data",
+    "icon": "react.png"
+  },
+  "16": {
+    "name": "Java",
+    "type": "backend",
+    "icon": "java.png"
+  },
+  "17": {
+    "name": "Reading baby books",
+    "type": "parenting",
+    "icon": "reading.png"
+  },
+  "18": {
+    "name": "Feeding babies",
+    "type": "parenting",
+    "icon": "feeding.png"
+  },
+  "19": {
+    "name": "SQL",
+    "type": "data",
+    "icon": "sql.png"
+  },
+  "20": {
+    "name": "Playing with blocks",
+    "type": "baby",
+    "icon": "sql.png"
+  },
+  "21": {
+    "name": "Crawling",
+    "type": "baby",
+    "icon": "sql.png"
+  },
+  "22": {
+    "name": "Blowing Raspberries",
+    "type": "baby",
+    "icon": "sql.png"
+  }
+}

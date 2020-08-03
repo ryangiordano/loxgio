@@ -15,7 +15,7 @@ export const Routes = withRouter(({ location }) => {
     <AnimatePresence exitBeforeEnter>
       <Switch>
         <Route path="/" exact component={TitleScreen} />
-        <Route path="/home"  component={Home} />
+        <Route path="/home" component={Home} />
       </Switch>
     </AnimatePresence>
   );
