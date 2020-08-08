@@ -15,22 +15,29 @@ const Spacer = (props) => {
   return <div {...props} />;
 };
 
-const CharacterContext = createContext<{
+export const CharacterContext = createContext<{
   characters: Character[];
-  setCharacter: (c: Character) => void;
+  setCharacterSkill: (characterId: number, skillIdToEquip: number, skillIdToRemove: number) => void;
 }>({
   characters: [],
-  setCharacter: (c: Character) => {},
+  setCharacterSkill: (characterId: number, skillIdToEquip: number, skillIdToRemove: number) => { },
 });
 
 const Home = ({ match }) => {
   const characterService = new CharacterService();
-  const characters = characterService.getAllCharacters();
+  const [characters, setCharacters] = useState(characterService.getAllCharacters())
   const [infoText, setInfoText] = useState("Great job");
   return (
-    <CharacterContext.Provider value={{ characters, setCharacter:()=>{
-      
-    } }}>
+    <CharacterContext.Provider value={{
+      characters, setCharacterSkill: (characterId: number, skillIdToEquip: number, skillIdToRemove: number) => {
+        const c = characters.find(cr => characterId === cr.id);
+        if (!c) {
+          throw new Error(`Cannot access character at id ${characters}`)
+        }
+        c.defaultEquippedSkills.splice(c.defaultEquippedSkills.findIndex(s => s === skillIdToRemove), 1, skillIdToEquip);
+        setCharacters([...characters])
+      }
+    }}>
       <GridContainer>
         <Spacer />
         <InfoBox infoText={infoText} />
