@@ -14,7 +14,6 @@ const Stats = ({
     setInfoText("Stats");
   }, []);
 
-
   return (
     <MainAreaBase>
       {characters.map((c) => {

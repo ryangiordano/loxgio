@@ -12,7 +12,12 @@ export default class CharacterService {
     return {
       id,
       ...characterToReturn,
-      skills: [...characterToReturn.skills.map((s) => this.getSkill(s.id))],
+      skills: [
+        ...characterToReturn.skills.map((s) => ({
+          level: s.level,
+          skill: this.getSkill(s.id),
+        })),
+      ],
     };
   }
   getSkill(id): Skill {
