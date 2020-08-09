@@ -3,12 +3,59 @@ body {
   color: white;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  color: white;
+}
+
 .home-grid {
   display: grid;
   grid-gap: 1rem;
   grid-auto-flow: column;
   grid-template-columns: 1fr 3fr;
   grid-template-rows: 1rem auto auto auto 1rem;
+}
+
+.detail-grid {
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-columns: 1fr 2fr 2fr;
+  grid-template-rows: auto;
+}
+
+.character-select-button:first-child {
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border: 2px solid white;
+}
+.character-select-button {
+  border-right: none;
+  border-left: none;
+  border-top: 2px solid white;
+  border-bottom: 2px solid white;
+}
+
+.character-select-button:last-child {
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border: 2px solid white;
+}
+
+.bar {
+  width: 100%;
+  height: 9px;
+  border: 2px solid #bfbfbf;
+}
+.hp-bar {
+  background-color: #ff777a;
+}
+.mp-bar {
+  background-color: #778eff;
 }
 
 /* Small devices (landscape phones, 576px and up)*/

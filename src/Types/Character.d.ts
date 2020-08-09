@@ -36,4 +36,5 @@ type Character = {
   skills: CharacterSkill[];
   defaultEquippedSkills: number[];
   sprite: string;
+  details: string;
 };

@@ -20,38 +20,41 @@ const Stats = ({
       {characters.map((c) => {
         return (
           <NavLink
+            key={c.id}
             to={`/home/stats/details/${c.id}`}
             style={{
               color: "white",
               textDecoration: "none",
             }}
           >
-            <div
-              style={{
-                display: "grid",
-                gridGap: "1rem",
-                gridTemplateColumns: "1fr 2fr 3fr",
-                gridTemplateRows: "auto",
-              }}
-              key={c.name}
-            >
-              <div>
-                <img
-                  style={{
-                    height: "100px",
-                  }}
-                  src={`/images/${c.profilePicture}`}
-                />
+            <div className="detail-grid" key={c.name}>
+              <div style={{ marginBottom: "2rem" }}>
+                <img src={`/images/${c.profilePicture}`} />
               </div>
-              <div>{c.name}</div>
               <div>
-                {c.links.map((l) => {
-                  return <a key={l.url}>{l.url}</a>;
-                })}
+                <h1 style={{ fontSize: "1.5rem", fontWeight: "bold" }}>
+                  {c.name}
+                </h1>
+                <p style={{ padding: 0, margin: 0 }}>
+                  Level <span>{c.level}</span> {c.jobTitle}
+                </p>
+                <div>
+                  <p style={{ fontWeight: "bold", padding: 0, margin: 0 }}>
+                    HP
+                  </p>
+                  <div className="hp-bar bar"></div>
+                  <p style={{ fontWeight: "bold", padding: 0, margin: 0 }}>
+                    MP
+                  </p>
+
+                  <div className="mp-bar bar"></div>
+                </div>
+              </div>
+              <div>
+                Great
               </div>
             </div>
           </NavLink>
-
         );
       })}
     </MainAreaBase>

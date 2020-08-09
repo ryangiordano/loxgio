@@ -10,15 +10,33 @@ export const Dropzone = ({
 }: {
   [x: string]: any;
 }) => {
+  const [isBeingHoveredOver, setIsBeingHoveredOver] = useState(false);
   return (
     <div
+      style={{
+        padding: isBeingHoveredOver ? "1rem" : 0,
+        transition: "all .3s",
+      }}
       onDrop={(e) => handleDrop(e)}
-      onDragOver={(e) => handleDragOver(e)}
-      onDragEnter={(e) => handleDragEnter(e)}
-      onDragLeave={(e) => handleDragLeave(e)}
+      onDragOver={(e) => {
+        e.preventDefault();
+        setIsBeingHoveredOver(true);
+
+        handleDragOver(e);
+      }}
+      onDragEnter={(e) => {
+        e.preventDefault();
+        setIsBeingHoveredOver(true);
+        handleDragEnter(e);
+      }}
+      onDragLeave={(e) => {
+        e.preventDefault();
+        setIsBeingHoveredOver(false);
+        handleDragLeave(e);
+      }}
       {...restProps}
     >
-      {children}
+      {children({ isBeingHoveredOver })}
     </div>
   );
 };
@@ -31,15 +49,16 @@ export const Draggable = ({
   children: JSX.Element;
   data: any;
   [x: string]: any;
-
 }) => {
   const [isDragging, setIsDragging] = useState(false);
+  console.log(isDragging);
+  const { style, ...rest } = restProps;
   return (
     <div
-
       style={{
         transition: "all .3s ease-in-out",
         opacity: isDragging ? 0 : 1,
+        ...style,
       }}
       draggable
       onDragStart={(e) => {
@@ -48,11 +67,11 @@ export const Draggable = ({
       onDrag={(e) => {
         setIsDragging(true);
       }}
-      onDrop={() => { }}
+      onDrop={() => {}}
       onDragEnd={() => {
         setIsDragging(false);
       }}
-      {...restProps}
+      {...rest}
     >
       {children}
     </div>
