@@ -32,7 +32,7 @@ const Stats = ({
                 style={{
                   height: "100px",
                 }}
-                src={c.profilePicture}
+                src={`/images/${c.profilePicture}`}
               />
             </div>
             <div>{c.name}</div>

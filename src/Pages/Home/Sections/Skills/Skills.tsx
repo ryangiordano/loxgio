@@ -42,69 +42,101 @@ const Skills = ({
     <CharacterContext.Consumer>
       {({ setCharacterSkill }) => (
         <MainAreaBase>
-          <div style={{ display: "flex" }}>
+          <div>
+            <div style={{ display: "flex", width: "100%" }}>
+              {characters.map((character) => {
+                const isActive = selectedCharacterId === character.id;
+                return (<button
+                  key={character.name}
+                  onClick={() => {
+                    setSelectedCharacterId(character.id);
+                  }}
+                  style={{
+                    border: "2px solid white",
+                    minHeight: "150px",
+                    width: isActive ? "100%" : "100px",
+                    opacity: isActive ? "1" : ".75",
+                    textAlign: "left",
+                    transition: "all .3s",
+                    display: "flex",
+                    padding: ".5rem"
+                  }}
+                >
+                  <div style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "100%" }}>
+                    <img src={`/images/${character.profilePicture}`} width={"100%"} />
+                  </div>
+                  {isActive ? <div style={{ overflow: "hidden", whiteSpace: "nowrap" }}>
+                    <h1 className="title" style={{ fontSize: "1rem", fontWeight: "bold" }}>{character.name}</h1>
+                    <p>Level {character.level}</p>
+                    <p>{character.jobTitle}</p>
+                  </div> : null}
+                </button>
+                )
+              })}
+            </div>
+
             {characters.map((character) => {
               const isActive = selectedCharacterId === character.id;
               return (
                 <div key={character.id}>
-                  <button
-                    key={character.name}
-                    onClick={() => {
-                      setSelectedCharacterId(character.id);
-                    }}
-                    style={{
-                      backgroundColor: isActive ? "red" : "blue",
-                    }}
-                  >
-                    {character.name}
-                  </button>
                   {isActive ? (
-                    <div style={{ display: "flex" }}>
-                      {character?.defaultEquippedSkills.map((id, index) => {
-                        return (
-                          <Dropzone
-                            key={id}
-                            style={{
-                              marginLeft: index === 0 ? null : "1rem",
-                            }}
-                            handleDrop={(e) => {
-                              const d = JSON.parse(
-                                e.dataTransfer.getData("application/my-app")
-                              );
-                              setCharacterSkill(character.id, d.skill.id, id)
-                            }}
-                            handleDragOver={(e) => {
-                              e.preventDefault();
-                              console.log("Draggin");
-                            }}
-                            handleDragEnter={(e) => {
-                              e.preventDefault();
-                              console.log("Enter");
-                            }}
-                            handleDragLeave={() => {
-                              console.log("Leave");
-                            }}
-                          >
-                            <SkillIcon src={character.skills.find(s => s.skill.id === id)?.skill.icon} name={character?.skills?.find((s) => s.skill.id === id)
-                              ?.skill.name} />
-                          </Dropzone>
-                        );
-                      })}
-                    </div>
+                    <>
+                      <div style={{ display: "flex", justifyContent: "center", alignItems: "center", marginTop: "1rem" }}>
+                        <h2 style={{ whiteSpace: "nowrap", marginRight: "10px" }}>Equipped</h2>
+                        <div style={{ width: "100%", height: "1px", borderTop: "1px solid white" }}></div>
+                      </div>
+                      <div style={{ display: "flex" }}>
+                        {character?.defaultEquippedSkills.map((id, index) => {
+                          return (
+                            <Dropzone
+                              key={id}
+                              style={{
+                                marginLeft: index === 0 ? null : "1rem",
+                              }}
+                              handleDrop={(e) => {
+                                const d = JSON.parse(
+                                  e.dataTransfer.getData("application/my-app")
+                                );
+                                setCharacterSkill(character.id, d.skill.id, id)
+                              }}
+                              handleDragOver={(e) => {
+                                e.preventDefault();
+                                console.log("Draggin");
+                              }}
+                              handleDragEnter={(e) => {
+                                e.preventDefault();
+                                console.log("Enter");
+                              }}
+                              handleDragLeave={() => {
+                                console.log("Leave");
+                              }}
+                            >
+                              <SkillIcon src={character.skills.find(s => s.skill.id === id)?.skill.icon} name={character?.skills?.find((s) => s.skill.id === id)
+                                ?.skill.name} />
+                            </Dropzone>
+                          );
+                        })}
+                      </div>
+                    </>
                   ) : null}
                 </div>
               );
             })}
           </div>
-          <div>
+
+          <div style={{ display: "flex", justifyContent: "center", alignItems: "center", marginTop: "1rem" }}>
+            <h2 style={{ whiteSpace: "nowrap", marginRight: "10px" }}>Skills</h2>
+            <div style={{ width: "100%", height: "1px", borderTop: "1px solid white" }}></div>
+          </div>
+          <div style={{ display: "flex", flexWrap: "wrap" }}>
             {selectedCharacter?.skills?.map((s) => {
               return !Boolean(
                 selectedCharacter.defaultEquippedSkills.find(
                   (ds) => s.skill.id === ds
                 )
               ) ? (
-                  <Draggable key={s.skill.id} data={s}>
-                    <>{s.skill.name}s</>
+                  <Draggable key={s.skill.id} data={s} style={{ margin: ".5rem" }}>
+                    <SkillIcon src={s.skill.icon} name={s.skill.name} size={"50px"} />
                   </Draggable>
                 ) : null;
             })}

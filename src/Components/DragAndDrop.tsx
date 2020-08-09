@@ -26,15 +26,19 @@ export const Dropzone = ({
 export const Draggable = ({
   children,
   data,
+  ...restProps
 }: {
   children: JSX.Element;
   data: any;
+  [x: string]: any;
+
 }) => {
   const [isDragging, setIsDragging] = useState(false);
   return (
     <div
+
       style={{
-        transition: "all .5s ease-in-out",
+        transition: "all .3s ease-in-out",
         opacity: isDragging ? 0 : 1,
       }}
       draggable
@@ -44,10 +48,11 @@ export const Draggable = ({
       onDrag={(e) => {
         setIsDragging(true);
       }}
-      onDrop={() => {}}
+      onDrop={() => { }}
       onDragEnd={() => {
         setIsDragging(false);
       }}
+      {...restProps}
     >
       {children}
     </div>
