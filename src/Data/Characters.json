@@ -6,6 +6,7 @@
     "email": "rgiordano@gmail.com",
     "level": 6,
     "profilePicture": "ryan-portrait.png",
+    "sprite": "ryan.gif",
     "links": [
       {
         "icon": "www.fake.com",
@@ -89,6 +90,7 @@
     "email": "loxgio@gmail.com",
     "level": 8,
     "profilePicture": "lo-portrait.png",
+    "sprite": "lo.gif",
     "links": [
       {
         "icon": "www.fake.com",
@@ -144,6 +146,7 @@
     "email": null,
     "level": 1,
     "profilePicture": "ryan-portrait.png",
+    "sprite": "aris.gif",
     "links": [],
     "phoneNumber": null,
     "defaultEquippedSkills": [

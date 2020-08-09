@@ -54,6 +54,7 @@ const Skills = ({
                   style={{
                     border: "2px solid white",
                     minHeight: "150px",
+                    backgroundColor: "#fff",
                     width: isActive ? "100%" : "100px",
                     opacity: isActive ? "1" : ".75",
                     textAlign: "left",
@@ -116,6 +117,7 @@ const Skills = ({
                             </Dropzone>
                           );
                         })}
+                        <img height={"75px"} style={{ marginLeft: "auto" }} src={`/images/${character.sprite}`} />
                       </div>
                     </>
                   ) : null}

@@ -35,4 +35,5 @@ type Character = {
   jobTitle: string;
   skills: CharacterSkill[];
   defaultEquippedSkills: number[];
+  sprite: string;
 };

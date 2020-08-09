@@ -6,6 +6,7 @@ import QuestLog from "./Sections/QuestLog";
 import Skills from "./Sections/Skills/Skills";
 import { Route, Redirect, Switch } from "react-router-dom";
 import CharacterService from "../../Services/CharacterService";
+import Details from "./Sections/Stats/Details/Details";
 
 const GridContainer = ({ children }) => {
   return <div className="container home-grid">{children}</div>;
@@ -45,6 +46,10 @@ const Home = ({ match }) => {
 
         <Switch>
           <Route
+            path={`${match.path}/stats/details/:characterId`}
+            render={(props) => <Details setInfoText={setInfoText} {...props} />}
+          />
+          <Route
             path={`${match.path}/stats`}
             render={() => (
               <Stats characters={characters} setInfoText={setInfoText} />
@@ -54,6 +59,7 @@ const Home = ({ match }) => {
             path={`${match.path}/quests`}
             render={() => <QuestLog setInfoText={setInfoText} />}
           />
+
           <Route
             path={`${match.path}/skills`}
             render={() => (
