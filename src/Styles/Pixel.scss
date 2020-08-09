@@ -1,0 +1,64 @@
+@import "node_modules/pixel-borders/src/styles/pixel-borders/pixel-borders-mixins";
+
+.pixel-border{
+  @include pixel-borders(
+  $corner-size: 1,                 
+  $border-size: 4px,              
+  $border-color: #ffffff,            
+  $border-inset-color: false
+);
+}
+
+.pixel-border-list-vertical{
+  @include pixel-borders(
+  $corner-size: 1,                 
+  $border-size: 4px,              
+  $border-color: #ffffff,            
+  $border-inset-color: false
+);
+&:first-child{
+    border-bottom:0;
+}
+&:last-child{
+  border-top:0;
+}
+}
+
+.pixel-border-list-horizontal{
+  @include pixel-borders(
+  $corner-size: 1,                 
+  $border-size: 4px,              
+  $border-color: #ffffff,            
+  $border-inset-color: false
+);
+&:first-child{
+    border-right:0;
+}
+&:last-child{
+  border-left:0;
+}
+}
+
+
+.pixel-panel {
+  transition:all .3s;
+
+
+@include pixel-box(
+  $corner-size:1,
+  $border-size:4px, 
+  $background-color:#349db8,              
+  $border-color: #92b3df,           
+  $border-inset: true,            
+  $border-inset-size: false,      
+  $border-inset-color: false,     
+  $border-inset-sides: false,
+  $border-inset-color-br: false,
+  $border-inset-color-tl: false
+);
+pointer-events: all;
+}
+
+.pixel-panel:after{
+    pointer-events:none;
+}

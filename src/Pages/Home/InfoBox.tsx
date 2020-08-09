@@ -5,10 +5,10 @@ const InfoBox = ({ infoText }) => {
     <div
       style={{
         padding: "1rem",
-        backgroundColor: "rgba(0,0,0,.5)",
         gridColumnStart: "span 2",
         gridRowStart: 2,
       }}
+      className="pixel-panel"
     >
       {infoText}
     </div>

@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 
 const SideNavItem = ({ to, text }) => {
   return (
-    <li style={{ listStyle: "none" }}>
+    <li style={{ listStyle: "none", marginBottom: ".75rem" }}>
       <NavLink
         to={to}
         style={{
@@ -21,12 +21,12 @@ const SideNav = (props) => {
     <div
       style={{
         padding: "1rem",
-        backgroundColor: "rgba(0,0,0,.5)",
         gridColumn: 1,
         gridRowStart: 3,
       }}
+      className="pixel-panel"
     >
-      <ul className="list-group">
+      <ul className="list-group" style={{ whiteSpace: "nowrap" }}>
         <SideNavItem to={"/home/stats"} text={"Stats"} />
         <SideNavItem to={"/home/quests"} text={"Quest Log"} />
         <SideNavItem to={"/home/skills"} text={"Skills"} />
