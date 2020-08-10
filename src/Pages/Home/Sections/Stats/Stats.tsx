@@ -28,7 +28,7 @@ const Stats = ({
       {characters.map((c, index) => {
         return (
 
-          <div className=" pixel-border-list-vertical" key={c.name} style={{ padding: "1rem" }}>
+          <div className="pixel-border pixel-border-list-vertical" key={c.name} style={{ padding: "1rem" }}>
             <NavLink
               key={c.id}
               to={`/home/stats/details/${c.id}`}

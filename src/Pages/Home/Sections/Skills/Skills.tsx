@@ -12,11 +12,11 @@ export const SkillIcon = ({ name, src, size = "70px" }) => {
         height: size,
         width: size,
         backgroundColor: "#fff",
-        borderRadius: "10px",
         padding: "3px",
         transition: "all .2s",
         transformOrigin: "center center",
       }}
+      className="pixel-border"
     >
       <img
         draggable="false"
@@ -25,7 +25,6 @@ export const SkillIcon = ({ name, src, size = "70px" }) => {
         src={`/images/${src}`}
         style={{
           height: "100%",
-          borderRadius: "10px",
         }}
       />
     </div>
@@ -73,7 +72,7 @@ const Skills = ({
                       display: "flex",
                       padding: ".5rem",
                     }}
-                    className={"pixel-border-list-horizontal"}
+                    className={"pixel-border pixel-border-list-horizontal"}
                   >
                     <div
                       style={{

@@ -7,37 +7,29 @@
   $border-color: #ffffff,            
   $border-inset-color: false
 );
+&-list-vertical{
+
+  &:first-child{
+      border-bottom:0;
+  }
+  &:last-child{
+    border-top:0;
+  }
+  }
+  &-list-horizontal{
+
+    &:first-child{
+        border-right:0;
+    }
+    &:last-child{
+      border-left:0;
+    }
+    }
 }
 
-.pixel-border-list-vertical{
-  @include pixel-borders(
-  $corner-size: 1,                 
-  $border-size: 4px,              
-  $border-color: #ffffff,            
-  $border-inset-color: false
-);
-&:first-child{
-    border-bottom:0;
-}
-&:last-child{
-  border-top:0;
-}
-}
 
-.pixel-border-list-horizontal{
-  @include pixel-borders(
-  $corner-size: 1,                 
-  $border-size: 4px,              
-  $border-color: #ffffff,            
-  $border-inset-color: false
-);
-&:first-child{
-    border-right:0;
-}
-&:last-child{
-  border-left:0;
-}
-}
+
+
 
 
 .pixel-panel {
