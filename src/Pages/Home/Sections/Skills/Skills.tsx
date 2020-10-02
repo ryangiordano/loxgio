@@ -78,13 +78,15 @@ const Skills = ({
                         display: "flex",
                         justifyContent: "center",
                         alignItems: "center",
-                        height: "100%",
+                        overflow: "hidden",
                         marginRight: "1rem",
                       }}
                     >
                       <img
                         src={`/images/${character.profilePicture}`}
-                        width={"100%"}
+                        style={{
+                          height: "100%",
+                        }}
                       />
                     </div>
                     {isActive ? (
