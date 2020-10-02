@@ -5,6 +5,8 @@ const QuestLog = ({ setInfoText }) => {
   useEffect(() => {
     setInfoText("Quest Log");
   }, []);
-  return <MainAreaBase>Quest log stuff</MainAreaBase>;
+  return <MainAreaBase>
+
+  </MainAreaBase>;
 };
 export default QuestLog;

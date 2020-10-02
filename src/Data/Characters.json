@@ -7,11 +7,13 @@
     "level": 5,
     "profilePicture": "ryan-portrait.png",
     "sprite": "ryan.gif",
-    "links": [{
-      "icon": "www.fake.com",
-      "description": "Linkedin",
-      "url": "www.also.com"
-    }],
+    "links": [
+      {
+        "icon": "www.fake.com",
+        "description": "Linkedin",
+        "url": "www.also.com"
+      }
+    ],
     "phoneNumber": "404-234-3366",
     "defaultEquippedSkills": [
       2,
@@ -19,7 +21,8 @@
       7
     ],
     "details": "Ryan Giordano has a wealth of experience at companies large and small writing software to solve problems and do cool things. He currently finds his home at Quora where he crafts components to build awesome products used by millions of people daily. He also leads the Frontend Group, a collaboration of front-end-focused software engineers and designers dedicated to writing clean, reusable, accessible front-end code. He likes to cycle, lift weights and learn different languages.",
-    "skills": [{
+    "skills": [
+      {
         "id": 1,
         "level": 10
       },
@@ -59,7 +62,6 @@
         "id": 8,
         "level": 7
       },
-
       {
         "id": 9,
         "level": 5
@@ -72,9 +74,6 @@
         "id": 11,
         "level": 10
       },
-
-
-
       {
         "id": 17,
         "level": 10
@@ -83,6 +82,17 @@
         "id": 18,
         "level": 10
       }
+    ],
+    "quests": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
     ]
   },
   "2": {
@@ -93,11 +103,13 @@
     "level": 4,
     "profilePicture": "lo-portrait.png",
     "sprite": "lo.gif",
-    "links": [{
-      "icon": "www.fake.com",
-      "description": "Linkedin",
-      "url": "www.also.com"
-    }],
+    "links": [
+      {
+        "icon": "www.fake.com",
+        "description": "Linkedin",
+        "url": "www.also.com"
+      }
+    ],
     "defaultEquippedSkills": [
       19,
       15,
@@ -105,7 +117,8 @@
     ],
     "details": "A lifelong and avid learner, Lo Giordano is a datamancer who finds beauty in patterns and trends in complex systems. She creates enterprise-level applications to help analysts better spot trends in big data. Perpetually curious with an insatiable appetite for books, Lo can almost always be found with her fingertips to the keyboard. When she isn't eyes-deep in code, she's enjoying a good movie or making some of the most delicious Sichuanese food you can imagine.",
     "phoneNumber": "404-234-3366",
-    "skills": [{
+    "skills": [
+      {
         "id": 19,
         "level": 10
       },
@@ -129,7 +142,6 @@
         "id": 11,
         "level": 10
       },
-
       {
         "id": 18,
         "level": 10
@@ -156,7 +168,8 @@
       22
     ],
     "details": "A baby who materialized into this world in November of 2019. He likes to look around, chew on things, and play with nearly everything he isn't supposed to play with.  He is typically sleeping, or gazing at his daddy, pondering eternity.",
-    "skills": [{
+    "skills": [
+      {
         "id": 20,
         "level": 5
       },
