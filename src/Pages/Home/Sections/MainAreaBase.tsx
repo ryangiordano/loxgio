@@ -5,10 +5,10 @@ const MainAreaBase = ({ children }) => {
     <div
       style={{
         padding: "1rem",
-        backgroundColor: "rgba(0,0,0,.5)",
         gridColumn: 2,
         gridRowStart: 3,
       }}
+      className="pixel-panel"
     >
       {children}
     </div>

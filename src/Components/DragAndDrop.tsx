@@ -1,4 +1,4 @@
-import React, { useState, ReactChildren } from "react";
+import React, { useState } from "react";
 
 export const Dropzone = ({
   handleDrop,
@@ -13,6 +13,7 @@ export const Dropzone = ({
   const [isBeingHoveredOver, setIsBeingHoveredOver] = useState(false);
   return (
     <div
+      draggable="false"
       style={{
         padding: isBeingHoveredOver ? "1rem" : 0,
         transition: "all .3s",
@@ -51,7 +52,6 @@ export const Draggable = ({
   [x: string]: any;
 }) => {
   const [isDragging, setIsDragging] = useState(false);
-  console.log(isDragging);
   const { style, ...rest } = restProps;
   return (
     <div
@@ -67,7 +67,7 @@ export const Draggable = ({
       onDrag={(e) => {
         setIsDragging(true);
       }}
-      onDrop={() => {}}
+      onDrop={() => { }}
       onDragEnd={() => {
         setIsDragging(false);
       }}

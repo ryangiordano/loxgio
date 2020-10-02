@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { CharacterContext } from "../../../Home";
 import MainAreaBase from "../../MainAreaBase";
 import { SkillIcon } from "../../Skills/Skills";
+import Divider from "../../../../../Components/Divider";
 
 const Details = ({ setInfoText, match }) => {
   useEffect(() => {
@@ -29,7 +30,6 @@ const Details = ({ setInfoText, match }) => {
                   <p>
                     Level <span>{c.level}</span> {c.jobTitle}
                   </p>
-                  <p>{c.phoneNumber}</p>
                   <p>{c.email}</p>
                 </div>
                 <div style={{ display: "flex", flexWrap: "wrap" }}>
@@ -46,8 +46,10 @@ const Details = ({ setInfoText, match }) => {
                   })}
                 </div>
               </div>
+              <Divider />
+
               <div>
-                <p>{c.details}</p>
+                <p className="long-form">{c.details}</p>
               </div>
             </div>
           );

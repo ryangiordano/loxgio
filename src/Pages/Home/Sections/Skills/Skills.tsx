@@ -3,6 +3,7 @@ import MainAreaBase from "../MainAreaBase";
 import { Draggable, Dropzone } from "../../../../Components/DragAndDrop";
 import { CharacterStateContext } from "../../../../State/CharacterState";
 import { CharacterContext } from "../../Home";
+import Divider from "../../../../Components/Divider";
 
 export const SkillIcon = ({ name, src, size = "70px" }) => {
   return (
@@ -11,19 +12,19 @@ export const SkillIcon = ({ name, src, size = "70px" }) => {
         height: size,
         width: size,
         backgroundColor: "#fff",
-        borderRadius: "10px",
         padding: "3px",
         transition: "all .2s",
         transformOrigin: "center center",
       }}
+      className="pixel-border"
     >
       <img
+        draggable="false"
         alt={name}
         title={name}
         src={`/images/${src}`}
         style={{
           height: "100%",
-          borderRadius: "10px",
         }}
       />
     </div>
@@ -71,7 +72,7 @@ const Skills = ({
                       display: "flex",
                       padding: ".5rem",
                     }}
-                    className={"character-select-button"}
+                    className={"pixel-border pixel-border-list-horizontal"}
                   >
                     <div
                       style={{
@@ -80,6 +81,7 @@ const Skills = ({
                         alignItems: "center",
                         overflow: "hidden",
                         marginRight: "1rem",
+                        height: "100%",
                       }}
                     >
                       <img
@@ -90,7 +92,13 @@ const Skills = ({
                       />
                     </div>
                     {isActive ? (
-                      <div style={{ overflow: "hidden", whiteSpace: "nowrap" }}>
+                      <div
+                        style={{
+                          overflow: "hidden",
+                          whiteSpace: "nowrap",
+                          marginLeft: "1rem",
+                        }}
+                      >
                         <h1
                           className="title"
                           style={{ fontSize: "1.5rem", fontWeight: "bold" }}
@@ -129,13 +137,7 @@ const Skills = ({
                         >
                           Equipped
                         </h2>
-                        <div
-                          style={{
-                            width: "100%",
-                            height: "1px",
-                            borderTop: "1px solid white",
-                          }}
-                        ></div>
+                        <Divider />
                       </div>
                       <div style={{ display: "flex" }}>
                         {character?.defaultEquippedSkills.map((id, index) => {
@@ -221,13 +223,7 @@ const Skills = ({
             >
               Skills
             </h2>
-            <div
-              style={{
-                width: "100%",
-                height: "1px",
-                borderTop: "1px solid white",
-              }}
-            ></div>
+            <Divider />
           </div>
           <div style={{ display: "flex", flexWrap: "wrap" }}>
             {selectedCharacter?.skills?.map((s) => {
