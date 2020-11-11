@@ -25,7 +25,7 @@ export const CharacterContext = createContext<{
     characterId: number,
     skillIdToEquip: number,
     skillIdToRemove: number
-  ) => {},
+  ) => { },
 });
 
 const Home = ({ match }) => {
@@ -57,7 +57,9 @@ const Home = ({ match }) => {
       }}
     >
       <GridContainer>
-        <InfoBox infoText={infoText} />
+        <InfoBox infoText={infoText} style={{
+          marginTop: "1rem"
+        }} />
         <div className="d-flex">
           <div style={{ marginRight: "1rem" }}>
             <SideNav />

@@ -4,6 +4,7 @@ import { Draggable, Dropzone } from "../../../../Components/DragAndDrop";
 import { CharacterStateContext } from "../../../../State/CharacterState";
 import { CharacterContext } from "../../Home";
 import Divider from "../../../../Components/Divider";
+import { CharacterDetails } from "../Stats/Stats";
 
 export const SkillIcon = ({ name, src, size = "70px" }) => {
   return (
@@ -99,14 +100,7 @@ const Skills = ({
                           marginLeft: "1rem",
                         }}
                       >
-                        <h1
-                          className="title"
-                          style={{ fontSize: "1.5rem", fontWeight: "bold" }}
-                        >
-                          {character.name}
-                        </h1>
-                        <p>Level {character.level}</p>
-                        <p>{character.jobTitle}</p>
+                        <CharacterDetails character={character} />
                       </div>
                     ) : null}
                   </button>
@@ -159,7 +153,7 @@ const Skills = ({
                               handleDragEnter={(e) => {
                                 e.preventDefault();
                               }}
-                              handleDragLeave={() => {}}
+                              handleDragLeave={() => { }}
                             >
                               {({ isBeingHoveredOver }) => {
                                 return (
@@ -232,18 +226,18 @@ const Skills = ({
                   (ds) => s.skill.id === ds
                 )
               ) ? (
-                <Draggable
-                  key={s.skill.id}
-                  data={s}
-                  style={{ margin: ".5rem" }}
-                >
-                  <SkillIcon
-                    src={s.skill.icon}
-                    name={s.skill.name}
-                    size={"50px"}
-                  />
-                </Draggable>
-              ) : null;
+                  <Draggable
+                    key={s.skill.id}
+                    data={s}
+                    style={{ margin: ".5rem" }}
+                  >
+                    <SkillIcon
+                      src={s.skill.icon}
+                      name={s.skill.name}
+                      size={"50px"}
+                    />
+                  </Draggable>
+                ) : null;
             })}
           </div>
         </MainAreaBase>

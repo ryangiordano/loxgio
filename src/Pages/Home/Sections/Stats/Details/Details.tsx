@@ -1,8 +1,10 @@
 import React, { useEffect } from "react";
-import { CharacterContext } from "../../../Home";
-import MainAreaBase from "../../MainAreaBase";
-import { SkillIcon } from "../../Skills/Skills";
 import Divider from "../../../../../Components/Divider";
+import MainAreaBase from "../../MainAreaBase";
+import { CharacterContext } from "../../../Home";
+import { SkillIcon } from "../../Skills/Skills";
+import { NavLink } from "react-router-dom";
+import { CharacterDetails } from "../Stats";
 
 const Details = ({ setInfoText, match }) => {
   useEffect(() => {
@@ -10,52 +12,61 @@ const Details = ({ setInfoText, match }) => {
   }, []);
   const characterId = match.params.characterId;
   return (
-    <MainAreaBase>
-      <CharacterContext.Consumer>
-        {({ characters }) => {
-          const c = characters.find((c) => c.id === Number(characterId));
-          if (!c) {
-            return null;
-          }
-          return (
-            <div>
-              <div className="detail-grid">
-                <div>
-                  <img src={`/images/${c.profilePicture}`} />
-                </div>
-                <div>
-                  <h1 style={{ fontSize: "1.5rem", fontWeight: "bold" }}>
-                    {c.name}
-                  </h1>
-                  <p>
-                    Level <span>{c.level}</span> {c.jobTitle}
-                  </p>
-                  <p>{c.email}</p>
-                </div>
-                <div style={{ display: "flex", flexWrap: "wrap" }}>
-                  {c.skills.map((s) => {
-                    return (
-                      <div style={{ margin: ".25rem" }}>
-                        <SkillIcon
-                          src={s.skill.icon}
-                          name={s.skill.name}
-                          size={"35px"}
-                        />
-                      </div>
-                    );
-                  })}
-                </div>
-              </div>
-              <Divider />
+    <>
+      <MainAreaBase>
+        <CharacterContext.Consumer>
+          {({ characters }) => {
+            const c = characters.find((c) => c.id === Number(characterId));
+            if (!c) {
+              return null;
+            }
+            return (
+              <>
+                <div className="detail-grid">
+                  <div>
+                    <img src={`/images/${c.profilePicture}`} />
+                  </div>
+                  
+                  <div>
+                    <CharacterDetails character={c} />
+                    <span>{c.email}</span>
+                  </div>
 
-              <div>
-                <p className="long-form">{c.details}</p>
-              </div>
-            </div>
-          );
-        }}
-      </CharacterContext.Consumer>
-    </MainAreaBase>
+                  <div style={{ display: "flex", flexWrap: "wrap" }}>
+                    {c.skills.map((s) => {
+                      return (
+                        <div style={{ margin: ".25rem" }}>
+                          <SkillIcon
+                            src={s.skill.icon}
+                            name={s.skill.name}
+                            size={"35px"}
+                          />
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+                <Divider />
+                <div>
+                  <p className="long-form">{c.details}</p>
+                </div>
+              </>
+            );
+          }}
+        </CharacterContext.Consumer>
+      </MainAreaBase>
+      <MainAreaBase style={{ marginTop: "1rem" }}>
+        <NavLink
+          to={"/home/stats"}
+          style={{
+            color: "white",
+            textDecoration: "none",
+          }}
+        >
+          &#x3c; Back
+      </NavLink>
+      </MainAreaBase>
+    </>
   );
 };
 
