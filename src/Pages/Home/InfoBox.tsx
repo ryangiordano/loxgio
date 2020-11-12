@@ -1,6 +1,6 @@
 import React from "react";
 
-const InfoBox = ({ infoText }) => {
+const InfoBox = ({ infoText, style = {} }) => {
   return (
     <div
       style={{
@@ -9,6 +9,7 @@ const InfoBox = ({ infoText }) => {
         marginTop: "1rem",
         gridColumnStart: "span 2",
         gridRowStart: 2,
+        ...style
       }}
       className="pixel-panel"
     >

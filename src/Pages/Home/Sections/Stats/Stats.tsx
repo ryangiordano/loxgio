@@ -10,6 +10,19 @@ const Bar = () => {
   return <div className={`bar ${loaded ? "full" : ""}`}></div>;
 };
 
+export const CharacterDetails = ({ character }: { character: Character }) => {
+  return (<>
+    <h1
+      className="title"
+      style={{ fontSize: "1.5rem", fontWeight: "bold" }}
+    >
+      {character.name}
+    </h1>
+    <p>Level {character.level}</p>
+    <p>{character.jobTitle}</p>
+  </>)
+}
+
 const Stats = ({
   setInfoText,
   characters,
@@ -42,29 +55,25 @@ const Stats = ({
                 <div style={{ marginBottom: "auto", marginTop: "auto" }}>
                   <img src={`/images/${c.profilePicture}`} />
                 </div>
+
                 <div>
-                  <h1 style={{ fontSize: "1.5rem", fontWeight: "bold" }}>
-                    {c.name}
-                  </h1>
-                  <p style={{ padding: 0, margin: 0 }}>
-                    Level <span>{c.level}</span> {c.jobTitle}
-                  </p>
-                  <div>
-                    <p style={{ fontWeight: "bold", padding: 0, margin: 0 }}>
-                      HP
-                    </p>
-                    <div className="hp-bar">
-                      <Bar />
-                    </div>
-                    <p style={{ fontWeight: "bold", padding: 0, margin: 0 }}>
-                      MP
-                    </p>
-                    <div className="mp-bar">
-                      <Bar />
-                    </div>
+                  <CharacterDetails character={c} />
+                </div>
+
+                <div>
+                  <span style={{ fontWeight: "bold", }}>
+                    HP
+                    </span>
+                  <div className="hp-bar">
+                    <Bar />
+                  </div>
+                  <span style={{ fontWeight: "bold", }}>
+                    MP
+                    </span>
+                  <div className="mp-bar">
+                    <Bar />
                   </div>
                 </div>
-                <div>Great</div>
               </div>
             </NavLink>
           </div>

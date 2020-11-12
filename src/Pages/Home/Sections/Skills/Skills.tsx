@@ -1,33 +1,69 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import MainAreaBase from "../MainAreaBase";
-import { Draggable, Dropzone } from "../../../../Components/DragAndDrop";
-import { CharacterStateContext } from "../../../../State/CharacterState";
-import { CharacterContext } from "../../Home";
 import Divider from "../../../../Components/Divider";
+import { Draggable, Dropzone } from "../../../../Components/DragAndDrop";
+import { CharacterContext } from "../../Home";
+import { CharacterDetails } from "../Stats/Stats";
+import { usePopper } from 'react-popper';
+import SkillPopover from "../../../../Components/SkillPopover";
 
 export const SkillIcon = ({ name, src, size = "70px" }) => {
+  const referenceElement = useRef(null);
+  const popperElement = useRef(null);
+  const [hovering, setHovering] = useState(false);
+  const [focusing, setFocusing] = useState(false);
+
+  const { styles, attributes } = usePopper(referenceElement.current, popperElement.current, {
+    modifiers: [{
+      name: 'offset',
+      options: {
+        offset: [0, 10],
+      },
+    },],
+  });
+
   return (
-    <div
-      style={{
-        height: size,
-        width: size,
-        backgroundColor: "#fff",
-        padding: "3px",
-        transition: "all .2s",
-        transformOrigin: "center center",
-      }}
-      className="pixel-border"
-    >
-      <img
-        draggable="false"
-        alt={name}
-        title={name}
-        src={`/images/${src}`}
+    <>
+      <button
+        type="button"
+        ref={referenceElement}
         style={{
-          height: "100%",
+          height: size,
+          width: size,
+          backgroundColor: "#fff",
+          padding: "3px",
+          transition: "all .2s",
+          transformOrigin: "center center",
         }}
-      />
-    </div>
+        className="pixel-border"
+        onMouseEnter={() => setHovering(true)}
+        onMouseLeave={() => setHovering(false)}
+        onFocus={() => setFocusing(false)}
+        onBlur={() => setFocusing(false)}
+        onPointerDown={() => {
+          setFocusing(false)
+          setHovering(false)
+        }}
+      >
+        <img
+          draggable="false"
+          alt={name}
+          title={name}
+          src={`/images/${src}`}
+          style={{
+            height: "100%",
+          }}
+        />
+      </button>
+      <div ref={popperElement} style={{
+        ...styles.popper,
+        zIndex: 1000,
+        visibility: hovering || focusing ? "visible" : "hidden",
+      }} {...attributes.popper}>
+        <SkillPopover content={name} />
+      </div>
+
+    </>
   );
 };
 
@@ -99,14 +135,7 @@ const Skills = ({
                           marginLeft: "1rem",
                         }}
                       >
-                        <h1
-                          className="title"
-                          style={{ fontSize: "1.5rem", fontWeight: "bold" }}
-                        >
-                          {character.name}
-                        </h1>
-                        <p>Level {character.level}</p>
-                        <p>{character.jobTitle}</p>
+                        <CharacterDetails character={character} />
                       </div>
                     ) : null}
                   </button>
@@ -159,7 +188,7 @@ const Skills = ({
                               handleDragEnter={(e) => {
                                 e.preventDefault();
                               }}
-                              handleDragLeave={() => {}}
+                              handleDragLeave={() => { }}
                             >
                               {({ isBeingHoveredOver }) => {
                                 return (
@@ -232,18 +261,19 @@ const Skills = ({
                   (ds) => s.skill.id === ds
                 )
               ) ? (
-                <Draggable
-                  key={s.skill.id}
-                  data={s}
-                  style={{ margin: ".5rem" }}
-                >
-                  <SkillIcon
-                    src={s.skill.icon}
-                    name={s.skill.name}
-                    size={"50px"}
-                  />
-                </Draggable>
-              ) : null;
+                  <Draggable
+                    key={s.skill.id}
+                    data={s}
+                    style={{ margin: ".5rem" }}
+                    draggingImageSrc={s.skill.icon}
+                  >
+                    <SkillIcon
+                      src={s.skill.icon}
+                      name={s.skill.name}
+                      size={"50px"}
+                    />
+                  </Draggable>
+                ) : null;
             })}
           </div>
         </MainAreaBase>
