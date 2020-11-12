@@ -265,6 +265,7 @@ const Skills = ({
                     key={s.skill.id}
                     data={s}
                     style={{ margin: ".5rem" }}
+                    draggingImageSrc={s.skill.icon}
                   >
                     <SkillIcon
                       src={s.skill.icon}
