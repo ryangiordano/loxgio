@@ -6,6 +6,7 @@ const InfoBox = ({ infoText }) => {
       style={{
         padding: "1rem",
         marginBottom: "1rem",
+        marginTop: "1rem",
         gridColumnStart: "span 2",
         gridRowStart: 2,
       }}
