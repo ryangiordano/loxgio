@@ -70,7 +70,7 @@ export const Draggable = ({
           const i = document.createElement("img");
           const width = 50;
           const height = 50;
-          document.body.append(i);
+          // document.body.append(i);
           i.src = `/images/${draggingImageSrc}`;
           i.height = height;
           i.width = width;
