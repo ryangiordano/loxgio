@@ -1,11 +1,11 @@
-import React, { useState, useEffect, createContext } from "react";
+import React, { useState, createContext } from "react";
 import InfoBox from "./InfoBox";
 import SideNav from "./SideNav";
 import Stats from "./Sections/Stats/Stats";
 import QuestLog from "./Sections/QuestLog";
 import Skills from "./Sections/Skills/Skills";
 import { Route, Redirect, Switch } from "react-router-dom";
-import CharacterService from "../../Services/CharacterService";
+import DataService from "../../Services/DataService";
 import Details from "./Sections/Stats/Details/Details";
 
 const GridContainer = ({ children }) => {
@@ -25,14 +25,14 @@ export const CharacterContext = createContext<{
     characterId: number,
     skillIdToEquip: number,
     skillIdToRemove: number
-  ) => { },
+  ) => {},
 });
 
 const Home = ({ match }) => {
-  const characterService = new CharacterService();
-  const [characters, setCharacters] = useState(
-    characterService.getAllCharacters()
-  );
+  const dataService = new DataService();
+  const [characters, setCharacters] = useState(dataService.getAllCharacters());
+  const [quests, setQuests] = useState(dataService.getAllQuests());
+
   const [infoText, setInfoText] = useState("Great job");
   return (
     <CharacterContext.Provider
@@ -57,9 +57,12 @@ const Home = ({ match }) => {
       }}
     >
       <GridContainer>
-        <InfoBox infoText={infoText} style={{
-          marginTop: "1rem"
-        }} />
+        <InfoBox
+          infoText={infoText}
+          style={{
+            marginTop: "1rem",
+          }}
+        />
         <div className="d-flex">
           <div style={{ marginRight: "1rem" }}>
             <SideNav />
@@ -80,7 +83,9 @@ const Home = ({ match }) => {
               />
               <Route
                 path={`${match.path}/quests`}
-                render={() => <QuestLog setInfoText={setInfoText} />}
+                render={() => (
+                  <QuestLog setInfoText={setInfoText} quests={quests} />
+                )}
               />
 
               <Route

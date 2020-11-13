@@ -1,8 +1,9 @@
 @import "/Styles/Pixel.scss";
+
 body {
   background-color: #1a1a1a;
   color: white;
-  font-family:"Press Start 2P"
+  font-family: "Press Start 2P"
 
 }
 
@@ -14,7 +15,7 @@ h5,
 h6,
 p {
   color: #f3f3f3;
-  font-family:"Press Start 2P"
+  font-family: "Press Start 2P"
 }
 
 p.long-form {
@@ -39,6 +40,7 @@ p.long-form {
 .character-select-button:first-child {
   border: 4px solid #92b3df;
 }
+
 .character-select-button {
   border-right: none;
   border-left: none;
@@ -53,39 +55,44 @@ p.long-form {
 .bar {
   height: 4px;
   transition: all 1.0s;
-  width:0;
+  width: 0;
 }
-.bar.full{
+
+.bar.full {
   width: 100%;
 
 }
-.hp-bar, .mp-bar{
-  width:100%;
+
+.hp-bar,
+.mp-bar {
+  width: 100%;
   border: 2px solid #bfbfbf;
-  
+
 }
+
 .hp-bar>.bar {
   background-color: #ff777a;
 
 }
+
 .mp-bar>.bar {
   background-color: #778eff;
+}
+
+.borderless {
+  border-color: transparent;
 }
 
 
 
 /* Small devices (landscape phones, 576px and up)*/
-@media (min-width: 576px) and (max-width: 767.98px) {
-}
+@media (min-width: 576px) and (max-width: 767.98px) {}
 
 /* Medium devices (tablets, 768px and up)*/
-@media (min-width: 768px) and (max-width: 991.98px) {
-}
+@media (min-width: 768px) and (max-width: 991.98px) {}
 
 /* Large devices (desktops, 992px and up)*/
-@media (min-width: 992px) and (max-width: 1199.98px) {
-}
+@media (min-width: 992px) and (max-width: 1199.98px) {}
 
 /* Extra large devices (large desktops, 1200px and up)*/
-@media (min-width: 1200px) {
-}
+@media (min-width: 1200px) {}

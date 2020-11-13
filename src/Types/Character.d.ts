@@ -38,3 +38,4 @@ type Character = {
   sprite: string;
   details: string;
 };
+

@@ -9,6 +9,7 @@ import {
 } from "react-router-dom";
 import TitleScreen from "./Pages/TitleScreen";
 import Home from "./Pages/Home/Home";
+import { Modal } from "./Components/Modal";
 
 export const Routes = withRouter(({ location }) => {
   return (
@@ -23,9 +24,11 @@ export const Routes = withRouter(({ location }) => {
 
 function App() {
   return (
-    <Router>
-      <Routes></Routes>
-    </Router>
+    <Modal>
+      <Router>
+        <Routes></Routes>
+      </Router>
+    </Modal>
   );
 }
 

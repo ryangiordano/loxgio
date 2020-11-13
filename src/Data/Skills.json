@@ -118,5 +118,15 @@
     "name": "Throwing Baby Tantrums",
     "type": "baby",
     "icon": "baby.png"
+  },
+  "25": {
+    "name": "GraphQL",
+    "type": "backend",
+    "icon": "graphql.png"
+  },
+  "26": {
+    "name": "Angular",
+    "type": "frontend",
+    "icon": "angular.png"
   }
 }
