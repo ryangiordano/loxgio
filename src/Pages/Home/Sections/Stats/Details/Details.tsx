@@ -2,9 +2,10 @@ import React, { useEffect } from "react";
 import Divider from "../../../../../Components/Divider";
 import MainAreaBase from "../../MainAreaBase";
 import { CharacterContext } from "../../../Home";
-import { SkillIcon } from "../../Skills/Skills";
 import { NavLink } from "react-router-dom";
 import { CharacterDetails } from "../Stats";
+import { SkillIcon } from "../../../../../Patterns/SkillIcon";
+import { theme } from "Styles/theme";
 
 const Details = ({ setInfoText, match }) => {
   useEffect(() => {
@@ -24,9 +25,12 @@ const Details = ({ setInfoText, match }) => {
               <>
                 <div className="detail-grid">
                   <div>
-                    <img src={`/images/${c.profilePicture}`} />
+                    <img
+                      draggable="false"
+                      src={`/images/${c.profilePicture}`}
+                    />
                   </div>
-                  
+
                   <div>
                     <CharacterDetails character={c} />
                     <span>{c.email}</span>
@@ -35,7 +39,10 @@ const Details = ({ setInfoText, match }) => {
                   <div style={{ display: "flex", flexWrap: "wrap" }}>
                     {c.skills.map((s) => {
                       return (
-                        <div style={{ margin: ".25rem" }}>
+                        <div
+                          key={s.skill.id}
+                          style={{ margin: theme.spacing.small }}
+                        >
                           <SkillIcon
                             src={s.skill.icon}
                             name={s.skill.name}
@@ -55,7 +62,7 @@ const Details = ({ setInfoText, match }) => {
           }}
         </CharacterContext.Consumer>
       </MainAreaBase>
-      <MainAreaBase style={{ marginTop: "1rem" }}>
+      <MainAreaBase style={{ marginTop: theme.spacing.giant }}>
         <NavLink
           to={"/home/stats"}
           style={{
@@ -64,7 +71,7 @@ const Details = ({ setInfoText, match }) => {
           }}
         >
           &#x3c; Back
-      </NavLink>
+        </NavLink>
       </MainAreaBase>
     </>
   );

@@ -1,4 +1,5 @@
 import React, { useState, useContext } from "react";
+import { theme } from "Styles/theme";
 import { PixelCard } from "./PixelCard";
 
 export interface ModalContextProps {
@@ -77,14 +78,20 @@ export const ModalLayout = ({ header, style = {}, children }) => {
   return (
     <PixelCard
       className={"pixel-panel"}
-      style={{ margin: "1rem", paddingBottom: "1rem", ...style }}
+      style={{
+        margin: theme.spacing.large,
+        paddingBottom: theme.spacing.large,
+        ...style,
+      }}
       header={
         <>
           <div
             className="d-flex"
             style={{ justifyContent: "space-between", alignItems: "center" }}
           >
-            <h1 style={{ fontSize: "1.5rem", padding: 0, margin: 0 }}>
+            <h1
+              style={{ fontSize: theme.fontSize.large, padding: 0, margin: 0 }}
+            >
               {header}
             </h1>
             <div className="d-flex" style={{ justifyContent: "flex-end" }}>

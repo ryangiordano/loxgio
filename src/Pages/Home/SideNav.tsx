@@ -1,13 +1,24 @@
+import Divider from "Components/Divider";
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
+import { theme } from "Styles/theme";
 
 const SideNavItem = ({ to, text }) => {
+  const l = useLocation();
+  const active = l.pathname.includes(to);
   return (
-    <li style={{ listStyle: "none", marginBottom: ".75rem" }}>
+    <li
+      style={{
+        listStyle: active ? "square " : "none",
+        marginBottom: theme.spacing.large,
+        transition: "all .3s",
+        transform: active ? `translateX(15px)` : "",
+      }}
+    >
       <NavLink
         to={to}
         style={{
-          color: "white",
+          color: theme.backgroundColor.white,
           textDecoration: "none",
         }}
       >
@@ -20,7 +31,7 @@ const SideNav = (props) => {
   return (
     <div
       style={{
-        padding: "1rem",
+        padding: theme.spacing.large,
         gridColumn: 1,
         gridRowStart: 3,
       }}
@@ -30,7 +41,8 @@ const SideNav = (props) => {
         <SideNavItem to={"/home/stats"} text={"Stats"} />
         <SideNavItem to={"/home/quests"} text={"Quest Log"} />
         <SideNavItem to={"/home/skills"} text={"Skills"} />
-        <SideNavItem to={"/"} text={"Title Screen"} />
+        <Divider />
+        <SideNavItem to={"/title"} text={"Title Screen"} />
       </ul>
     </div>
   );

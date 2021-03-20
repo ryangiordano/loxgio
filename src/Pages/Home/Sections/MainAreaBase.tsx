@@ -1,13 +1,14 @@
 import React from "react";
+import { theme } from "Styles/theme";
 
 const MainAreaBase = ({ children, style = {} }) => {
   return (
     <div
       style={{
-        padding: "1rem",
+        padding: theme.spacing.large,
         gridColumn: 2,
         gridRowStart: 3,
-        ...style
+        ...style,
       }}
       className="pixel-panel"
     >

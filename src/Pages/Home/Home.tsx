@@ -1,12 +1,13 @@
 import React, { useState, createContext } from "react";
-import InfoBox from "./InfoBox";
-import SideNav from "./SideNav";
-import Stats from "./Sections/Stats/Stats";
-import QuestLog from "./Sections/QuestLog";
-import Skills from "./Sections/Skills/Skills";
-import { Route, Redirect, Switch } from "react-router-dom";
-import DataService from "../../Services/DataService";
-import Details from "./Sections/Stats/Details/Details";
+import DataService from "Services/DataService";
+import { Switch, Route, Redirect } from "react-router-dom";
+import Details from "Pages/Home/Sections/Stats/Details/Details";
+import Stats from "Pages/Home/Sections/Stats/Stats";
+import QuestLog from "Pages/Home/Sections/QuestLog";
+import SideNav from "Pages/Home/SideNav";
+import Skills from "Pages/Home/Sections/Skills/Skills";
+import InfoBox from "Pages/Home/InfoBox";
+import { theme } from "Styles/theme";
 
 const GridContainer = ({ children }) => {
   return <div className="container">{children}</div>;
@@ -60,11 +61,11 @@ const Home = ({ match }) => {
         <InfoBox
           infoText={infoText}
           style={{
-            marginTop: "1rem",
+            marginTop: theme.spacing.large,
           }}
         />
         <div className="d-flex">
-          <div style={{ marginRight: "1rem" }}>
+          <div style={{ marginRight: theme.spacing.large }}>
             <SideNav />
           </div>
           <div style={{ flexGrow: 1 }}>

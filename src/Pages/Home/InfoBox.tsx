@@ -1,15 +1,16 @@
 import React from "react";
+import { theme } from "Styles/theme";
 
 const InfoBox = ({ infoText, style = {} }) => {
   return (
     <div
       style={{
-        padding: "1rem",
-        marginBottom: "1rem",
-        marginTop: "1rem",
+        padding: theme.spacing.giant,
+        marginBottom: theme.spacing.giant,
+        marginTop: theme.spacing.giant,
         gridColumnStart: "span 2",
         gridRowStart: 2,
-        ...style
+        ...style,
       }}
       className="pixel-panel"
     >

@@ -3,7 +3,7 @@
 .pixel-border {
   @include pixel-borders($corner-size: 1,
     $border-size: 4px,
-    $border-color: #f3f3f3,
+    $border-color: #e9e7e7,
     $border-inset-color: false);
 
   &-list-vertical {
@@ -42,8 +42,8 @@
     $border-size:4px,
     // $background-color:#349db8,              
     // $border-color: #92b3df,           
-    $background-color:#038089,
-    $border-color: #04b7c6,
+    $background-color:#355e51,
+    $border-color: #5f965f,
     $border-inset: true,
     $border-inset-size: false,
     $border-inset-color: false,

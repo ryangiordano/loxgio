@@ -4,68 +4,8 @@ import Divider from "../../../../Components/Divider";
 import { Draggable, Dropzone } from "../../../../Components/DragAndDrop";
 import { CharacterContext } from "../../Home";
 import { CharacterDetails } from "../Stats/Stats";
-import { usePopper } from 'react-popper';
-import SkillPopover from "../../../../Components/SkillPopover";
-
-export const SkillIcon = ({ name, src, size = "70px" }) => {
-  const referenceElement = useRef(null);
-  const popperElement = useRef(null);
-  const [hovering, setHovering] = useState(false);
-  const [focusing, setFocusing] = useState(false);
-
-  const { styles, attributes } = usePopper(referenceElement.current, popperElement.current, {
-    modifiers: [{
-      name: 'offset',
-      options: {
-        offset: [0, 10],
-      },
-    },],
-  });
-
-  return (
-    <>
-      <button
-        type="button"
-        ref={referenceElement}
-        style={{
-          height: size,
-          width: size,
-          backgroundColor: "#fff",
-          padding: "3px",
-          transition: "all .2s",
-          transformOrigin: "center center",
-        }}
-        className="pixel-border"
-        onMouseEnter={() => setHovering(true)}
-        onMouseLeave={() => setHovering(false)}
-        onFocus={() => setFocusing(false)}
-        onBlur={() => setFocusing(false)}
-        onPointerDown={() => {
-          setFocusing(false)
-          setHovering(false)
-        }}
-      >
-        <img
-          draggable="false"
-          alt={name}
-          title={name}
-          src={`/images/${src}`}
-          style={{
-            height: "100%",
-          }}
-        />
-      </button>
-      <div ref={popperElement} style={{
-        ...styles.popper,
-        zIndex: 1000,
-        visibility: hovering || focusing ? "visible" : "hidden",
-      }} {...attributes.popper}>
-        <SkillPopover content={name} />
-      </div>
-
-    </>
-  );
-};
+import { SkillIcon } from "../../../../Patterns/SkillIcon";
+import { theme } from "Styles/theme";
 
 const Skills = ({
   setInfoText,
@@ -106,7 +46,7 @@ const Skills = ({
                       textAlign: "left",
                       transition: "all .3s",
                       display: "flex",
-                      padding: ".5rem",
+                      padding: theme.spacing.medium,
                     }}
                     className={"pixel-border pixel-border-list-horizontal"}
                   >
@@ -116,11 +56,12 @@ const Skills = ({
                         justifyContent: "center",
                         alignItems: "center",
                         overflow: "hidden",
-                        marginRight: "1rem",
+                        marginRight: theme.spacing.large,
                         height: "100%",
                       }}
                     >
                       <img
+                        draggable="false"
                         src={`/images/${character.profilePicture}`}
                         style={{
                           height: "100%",
@@ -132,7 +73,7 @@ const Skills = ({
                         style={{
                           overflow: "hidden",
                           whiteSpace: "nowrap",
-                          marginLeft: "1rem",
+                          marginLeft: theme.spacing.large,
                         }}
                       >
                         <CharacterDetails character={character} />
@@ -154,14 +95,14 @@ const Skills = ({
                           display: "flex",
                           justifyContent: "center",
                           alignItems: "center",
-                          marginTop: "1rem",
+                          marginTop: theme.spacing.large,
                         }}
                       >
                         <h2
                           style={{
                             whiteSpace: "nowrap",
-                            marginRight: "10px",
-                            fontSize: "1.25rem",
+                            marginRight: theme.spacing.large,
+                            fontSize: theme.fontSize.medium,
                           }}
                         >
                           Equipped
@@ -174,7 +115,8 @@ const Skills = ({
                             <Dropzone
                               key={id}
                               style={{
-                                marginLeft: index === 0 ? null : "1rem",
+                                marginLeft:
+                                  index === 0 ? null : theme.spacing.large,
                               }}
                               handleDrop={(e) => {
                                 const d = JSON.parse(
@@ -188,7 +130,7 @@ const Skills = ({
                               handleDragEnter={(e) => {
                                 e.preventDefault();
                               }}
-                              handleDragLeave={() => { }}
+                              handleDragLeave={() => {}}
                             >
                               {({ isBeingHoveredOver }) => {
                                 return (
@@ -223,6 +165,7 @@ const Skills = ({
                           );
                         })}
                         <img
+                          draggable="false"
                           height={"75px"}
                           style={{ marginLeft: "auto" }}
                           src={`/images/${character.sprite}`}
@@ -240,14 +183,14 @@ const Skills = ({
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
-              marginTop: "1rem",
+              marginTop: theme.spacing.large,
             }}
           >
             <h2
               style={{
                 whiteSpace: "nowrap",
-                marginRight: "10px",
-                fontSize: "1.25rem",
+                marginRight: theme.spacing.giant,
+                fontSize: theme.fontSize.medium,
               }}
             >
               Skills
@@ -261,19 +204,19 @@ const Skills = ({
                   (ds) => s.skill.id === ds
                 )
               ) ? (
-                  <Draggable
-                    key={s.skill.id}
-                    data={s}
-                    style={{ margin: ".5rem" }}
-                    draggingImageSrc={s.skill.icon}
-                  >
-                    <SkillIcon
-                      src={s.skill.icon}
-                      name={s.skill.name}
-                      size={"50px"}
-                    />
-                  </Draggable>
-                ) : null;
+                <Draggable
+                  key={s.skill.id}
+                  data={s}
+                  style={{ margin: theme.spacing.medium }}
+                  draggingImageSrc={s.skill.icon}
+                >
+                  <SkillIcon
+                    src={s.skill.icon}
+                    name={s.skill.name}
+                    size={"50px"}
+                  />
+                </Draggable>
+              ) : null;
             })}
           </div>
         </MainAreaBase>

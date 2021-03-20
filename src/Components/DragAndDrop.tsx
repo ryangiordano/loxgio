@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { theme } from "Styles/theme";
 
 export const Dropzone = ({
   handleDrop,
@@ -15,7 +16,7 @@ export const Dropzone = ({
     <div
       draggable="false"
       style={{
-        padding: isBeingHoveredOver ? "1rem" : 0,
+        padding: isBeingHoveredOver ? theme.spacing.large : 0,
         transition: "all .3s",
       }}
       onDrop={(e) => handleDrop(e)}
@@ -66,7 +67,6 @@ export const Draggable = ({
         }}
         draggable
         onDragStart={(e) => {
-
           const i = document.createElement("img");
           const width = 50;
           const height = 50;
@@ -74,21 +74,20 @@ export const Draggable = ({
           i.src = `/images/${draggingImageSrc}`;
           i.height = height;
           i.width = width;
-          i.style.backgroundColor = "white"
+          i.style.backgroundColor = "white";
           i.style.borderRadius = "15px";
-          i.style.margin = "1rem";
+          i.style.margin = theme.spacing.large;
 
-         //todo We need to find a way to reliably attach and remove elements from the dom
-         // while dragging so that we can change the
-         // drag image on the cursor.
+          //todo We need to find a way to reliably attach and remove elements from the dom
+          // while dragging so that we can change the
+          // drag image on the cursor.
           // e.dataTransfer.setDragImage(i, -10, -10)
           e.dataTransfer.setData("application/my-app", JSON.stringify(data));
         }}
         onDrag={(e) => {
           setIsDragging(true);
         }}
-        onDrop={() => {
-        }}
+        onDrop={() => {}}
         onDragEnd={() => {
           setIsDragging(false);
         }}
@@ -97,6 +96,5 @@ export const Draggable = ({
         {children}
       </div>
     </>
-
   );
 };
