@@ -6,6 +6,8 @@ import { SkillIcon } from "Patterns/SkillIcon";
 import React, { useEffect } from "react";
 import { theme } from "Styles/theme";
 import { NavLink } from "react-router-dom";
+import { AnimatePresence, motion } from "framer-motion";
+import { SlideY } from "Lib/AnimationVariants";
 
 const Details = ({ setInfoText, match }) => {
   useEffect(() => {
@@ -36,22 +38,48 @@ const Details = ({ setInfoText, match }) => {
                     <span>{c.email}</span>
                   </div>
 
-                  <div style={{ display: "flex", flexWrap: "wrap" }}>
-                    {c.skills.map((s) => {
-                      return (
-                        <div
-                          key={s.skill.id}
-                          style={{ margin: theme.spacing.small }}
-                        >
-                          <SkillIcon
-                            src={s.skill.icon}
-                            name={s.skill.name}
-                            size={"35px"}
-                          />
-                        </div>
-                      );
-                    })}
-                  </div>
+                  <AnimatePresence>
+                    <motion.div
+                      variants={{
+                        hidden: { opacity: 0 },
+                        show: {
+                          opacity: 1,
+                          transition: {
+                            staggerChildren: 0.05,
+                            delayChildren: 0.3,
+                          },
+                        },
+                      }}
+                      initial="hidden"
+                      animate="show"
+                      style={{ display: "flex", flexWrap: "wrap" }}
+                    >
+                      {c.skills.map((s) => {
+                        return (
+                          <motion.div
+                            variants={{
+                              hidden: { scale: 0, top: 100 },
+                              show: { scale: 1, top: 30 },
+                            }}
+                            key={s.skill.id}
+                          >
+                            <div
+                              style={{
+                                margin: theme.spacing.small,
+                                position: "relative",
+                              }}
+                            >
+                              <SkillIcon
+                                src={s.skill.icon}
+                                name={s.skill.name}
+                                size={"35px"}
+                              />
+                            </div>
+                          </motion.div>
+                        );
+                      })}
+                    </motion.div>
+                  </AnimatePresence>
                 </div>
                 <Divider />
                 <div>
