@@ -1,6 +1,6 @@
 import MainAreaBase from "Pages/Home/Sections/MainAreaBase";
 import Bar from "Patterns/Bar/Bar";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { theme } from "Styles/theme";
 

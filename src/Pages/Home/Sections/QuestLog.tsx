@@ -1,6 +1,6 @@
+import { ModalConsumer, ModalLayout } from "Components/Modal";
+import MainAreaBase from "Pages/Home/Sections/MainAreaBase";
 import React, { useState } from "react";
-import MainAreaBase from "./MainAreaBase";
-import { ModalConsumer, ModalLayout } from "../../../Components/Modal";
 
 const QuestListEntry = ({ title, description, characterPortraits }) => {
   const [hovering, setHovering] = useState(false);

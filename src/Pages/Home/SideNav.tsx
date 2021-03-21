@@ -11,8 +11,8 @@ const SideNavItem = ({ to, text }) => {
       style={{
         listStyle: active ? "square " : "none",
         marginBottom: theme.spacing.large,
-        transition: "all .3s",
-        transform: active ? `translateX(15px)` : "",
+        transition: "all .1s",
+        transform: active ? `translateX(20px)` : "",
       }}
     >
       <NavLink

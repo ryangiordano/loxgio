@@ -1,10 +1,10 @@
-import React, { useEffect, useState, useRef } from "react";
-import MainAreaBase from "../MainAreaBase";
-import Divider from "../../../../Components/Divider";
-import { Draggable, Dropzone } from "../../../../Components/DragAndDrop";
-import { CharacterContext } from "../../Home";
-import { CharacterDetails } from "../Stats/Stats";
-import { SkillIcon } from "../../../../Patterns/SkillIcon";
+import Divider from "Components/Divider";
+import { Dropzone, Draggable } from "Components/DragAndDrop";
+import { CharacterContext } from "Pages/Home/Home";
+import MainAreaBase from "Pages/Home/Sections/MainAreaBase";
+import { CharacterDetails } from "Pages/Home/Sections/Stats/Stats";
+import { SkillIcon } from "Patterns/SkillIcon";
+import React, { useEffect, useState } from "react";
 import { theme } from "Styles/theme";
 
 const Skills = ({
