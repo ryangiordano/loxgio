@@ -7,7 +7,7 @@ import React, { useEffect } from "react";
 import { theme } from "Styles/theme";
 import { NavLink } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
-import { SlideY } from "Lib/AnimationVariants";
+import WriteIn from "Components/WriteIn";
 
 const Details = ({ setInfoText, match }) => {
   useEffect(() => {
@@ -83,7 +83,9 @@ const Details = ({ setInfoText, match }) => {
                 </div>
                 <Divider />
                 <div>
-                  <p className="long-form">{c.details}</p>
+                  <p className="long-form">
+                    <WriteIn text={c.details}></WriteIn>
+                  </p>
                 </div>
               </>
             );

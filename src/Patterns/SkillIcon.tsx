@@ -3,7 +3,13 @@ import React from "react";
 import { theme } from "Styles/theme";
 import SkillPopover from "../Components/SkillPopover";
 
-export const SkillIcon = ({ name, src, size = "70px" }) => {
+export const SkillIcon = ({
+  name,
+  src,
+  size = "70px",
+  offsetX = 0,
+  offsetY = 15,
+}) => {
   return (
     <Popover
       trigger={
@@ -17,6 +23,8 @@ export const SkillIcon = ({ name, src, size = "70px" }) => {
           }}
         />
       }
+      offsetX={offsetX}
+      offsetY={offsetY}
       triggerProps={{
         style: {
           height: size,

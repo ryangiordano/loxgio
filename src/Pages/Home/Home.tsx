@@ -84,43 +84,34 @@ const Home = ({ match }) => {
               <SideNav />
             </div>
             <div style={{ flexGrow: 1 }}>
-              <AnimatePresence exitBeforeEnter initial={false}>
-                <Switch location={l} key={l.pathname}>
-                  <Route
-                    path={`${match.path}/stats/details/:characterId`}
-                    render={(props) => (
-                      <motion.div {...Flip}>
-                        <Details setInfoText={setInfoText} {...props} />
-                      </motion.div>
-                    )}
-                  />
+              <Route
+                exact
+                path={`${match.path}/stats/details/:characterId`}
+                render={(props) => (
+                  <motion.div {...Flip}>
+                    <Details setInfoText={setInfoText} {...props} />
+                  </motion.div>
+                )}
+              />
 
-                  <Route path={`${match.path}/stats`}>
-                    <motion.div {...Flip}>
-                      <Stats
-                        characters={characters}
-                        setInfoText={setInfoText}
-                      />
-                    </motion.div>
-                  </Route>
+              <Route exact path={`${match.path}/stats`}>
+                <motion.div {...Flip}>
+                  <Stats characters={characters} setInfoText={setInfoText} />
+                </motion.div>
+              </Route>
 
-                  <Route path={`${match.path}/quests`}>
-                    <motion.div {...Flip}>
-                      <QuestLog setInfoText={setInfoText} quests={quests} />
-                    </motion.div>
-                  </Route>
+              <Route path={`${match.path}/quests`}>
+                <motion.div {...Flip}>
+                  <QuestLog setInfoText={setInfoText} quests={quests} />
+                </motion.div>
+              </Route>
 
-                  <Route path={`${match.path}/skills`}>
-                    <motion.div {...Flip}>
-                      <Skills
-                        setInfoText={setInfoText}
-                        characters={characters}
-                      />
-                    </motion.div>
-                  </Route>
-                  {/* <Redirect exact from="" to={`${match.path}/stats`} /> */}
-                </Switch>
-              </AnimatePresence>
+              <Route path={`${match.path}/skills`}>
+                <motion.div {...Flip}>
+                  <Skills setInfoText={setInfoText} characters={characters} />
+                </motion.div>
+              </Route>
+              <Redirect exact from="" to={`${match.path}/stats`} />
             </div>
           </div>
         </motion.div>

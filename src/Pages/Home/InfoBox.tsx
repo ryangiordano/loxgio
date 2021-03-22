@@ -1,3 +1,4 @@
+import WriteIn from "Components/WriteIn";
 import React from "react";
 import { theme } from "Styles/theme";
 
@@ -14,7 +15,8 @@ const InfoBox = ({ infoText, style = {} }) => {
       }}
       className="pixel-panel"
     >
-      {infoText}
+      {/* {infoText} */}
+      <WriteIn text={infoText} speedInMilliseconds={20}></WriteIn>
     </div>
   );
 };

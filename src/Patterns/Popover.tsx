@@ -7,10 +7,14 @@ const Popover = ({
   trigger,
   popover,
   triggerProps,
+  offsetX = 0,
+  offsetY = 15,
 }: {
   trigger: JSX.Element;
   popover: JSX.Element;
   triggerProps?: Record<string, unknown>;
+  offsetX?: number;
+  offsetY?: number;
 }) => {
   const id = new Date().getTime();
 
@@ -47,7 +51,7 @@ const Popover = ({
         {
           name: "offset",
           options: {
-            offset: [0, 15],
+            offset: [offsetX, offsetY],
           },
         },
       ],

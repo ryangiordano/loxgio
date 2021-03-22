@@ -148,6 +148,7 @@ const Skills = ({
                                         justifyContent: "center",
                                         height: "70px",
                                         width: "70px",
+                                        position: "relative",
                                       }}
                                     >
                                       <SkillIcon
@@ -164,6 +165,7 @@ const Skills = ({
                                         size={
                                           isBeingHoveredOver ? "60px" : "70px"
                                         }
+                                        offsetY={20}
                                       />
                                     </div>
                                   );
@@ -214,13 +216,17 @@ const Skills = ({
                   <Draggable
                     key={s.skill.id}
                     data={s}
-                    style={{ margin: theme.spacing.medium }}
+                    style={{
+                      margin: theme.spacing.medium,
+                      position: "relative",
+                    }}
                     draggingImageSrc={s.skill.icon}
                   >
                     <SkillIcon
                       src={s.skill.icon}
                       name={s.skill.name}
                       size={"50px"}
+                      offsetY={15}
                     />
                   </Draggable>
                 ) : null;
