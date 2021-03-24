@@ -74,16 +74,18 @@ const Popover = ({
       >
         {trigger}
       </button>
-      <div
-        ref={popperElement}
-        style={{
-          ...styles.popper,
-          zIndex: 1000,
-          visibility: open ? "visible" : "hidden",
-        }}
-        {...attributes.popper}
-      >
-        {popover}
+      <div style={{ position: "relative" }}>
+        <div
+          ref={popperElement}
+          style={{
+            ...styles.popper,
+            zIndex: 1000,
+            visibility: open ? "visible" : "hidden",
+          }}
+          {...attributes.popper}
+        >
+          {popover}
+        </div>
       </div>
     </>
   );

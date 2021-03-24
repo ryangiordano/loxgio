@@ -3,7 +3,6 @@ import Home from "Pages/Home/Home";
 import TitleScreen from "Pages/TitleScreen";
 import React from "react";
 import { Route, Switch, withRouter } from "react-router-dom";
-import { TransitionGroup, CSSTransition } from "react-transition-group";
 
 const Routes = withRouter(({ location }) => {
   return (

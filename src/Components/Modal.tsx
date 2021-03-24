@@ -1,3 +1,4 @@
+import { AnimatePresence, motion } from "framer-motion";
 import React, { useState, useContext } from "react";
 import { theme } from "Styles/theme";
 import { PixelCard } from "./PixelCard";
@@ -48,14 +49,26 @@ export const Modal = (props) => {
             closeModal();
           }}
         >
-          <div
-            onClick={(e) => {
-              e.preventDefault();
-              e.stopPropagation();
-            }}
-          >
-            {modalOpen && modalComponent ? modalComponent : <></>}
-          </div>
+          {modalOpen && (
+            <AnimatePresence>
+              {modalOpen && (
+                <motion.div
+                  key="modal"
+                  initial={{ opacity: 0, scale: 0.5 }}
+                  animate={{
+                    opacity: 1,
+                    scale: 1,
+                  }}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                  }}
+                >
+                  {modalComponent ? modalComponent : <></>}
+                </motion.div>
+              )}
+            </AnimatePresence>
+          )}
         </div>
         {props.children}
       </ModalContext.Provider>

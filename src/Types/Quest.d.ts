@@ -14,6 +14,6 @@ type Quest = {
   links: LinkObj[];
   skills: CharacterSkill[];
   media: MediaObj;
-  characters: Character[];
+  characters: number[];
   description: string;
 };

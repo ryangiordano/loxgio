@@ -1,7 +1,7 @@
 import Divider from "Components/Divider";
 import React from "react";
-import { NavLink, useLocation } from "react-router-dom";
 import { theme } from "Styles/theme";
+import { NavLink, useLocation } from "react-router-dom";
 
 const SideNavItem = ({ to, text }) => {
   const l = useLocation();

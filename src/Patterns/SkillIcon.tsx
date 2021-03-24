@@ -8,7 +8,7 @@ export const SkillIcon = ({
   src,
   size = "70px",
   offsetX = 0,
-  offsetY = 15,
+  offsetY = 0,
 }) => {
   return (
     <Popover

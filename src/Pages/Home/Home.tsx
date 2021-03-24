@@ -1,14 +1,14 @@
 import React, { useState, createContext } from "react";
 import DataService from "Services/DataService";
-import { Switch, Route, Redirect, useLocation } from "react-router-dom";
-import Details from "Pages/Home/Sections/Stats/Details/Details";
+import { Route, Redirect, useLocation } from "react-router-dom";
+import Details from "Components/Stats/Details/Details";
 import Stats from "Pages/Home/Sections/Stats/Stats";
 import SideNav from "Pages/Home/SideNav";
 import Skills from "Pages/Home/Sections/Skills/Skills";
 import InfoBox from "Pages/Home/InfoBox";
 import { theme } from "Styles/theme";
-import { AnimatePresence, motion } from "framer-motion";
-import QuestLog from "Pages/Home/Sections/QuestLog";
+import { motion } from "framer-motion";
+import Quests from "Pages/Home/Quests/Quests";
 import { Flip } from "../../Lib/AnimationVariants";
 
 const GridContainer = ({ children }) => {
@@ -102,7 +102,11 @@ const Home = ({ match }) => {
 
               <Route path={`${match.path}/quests`}>
                 <motion.div {...Flip}>
-                  <QuestLog setInfoText={setInfoText} quests={quests} />
+                  <Quests
+                    setInfoText={setInfoText}
+                    characters={characters}
+                    quests={quests}
+                  />
                 </motion.div>
               </Route>
 

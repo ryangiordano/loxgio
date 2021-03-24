@@ -189,5 +189,24 @@
             13, 7, 2, 1
         ],
         "characters": [1, 2]
+    },
+    "11": {
+        "id": 11,
+        "title": "A little baby named Aris",
+        "links": [{
+            "url": "https://kaizendaruma.wordpress.com/2019/12/26/christmas-present-from-aris/",
+            "text": "Welcome to the world, baby Aris"
+        }],
+        "description": "Lo and Ryan collaborated together to create the world's most amazing little boy. He loves to read books and giggle and eat (a lot!). He speaks nothing right now, but will be speaking English and Chinese to start. The future looks bright for our little man.",
+        "media": {
+            "alt": "",
+            "src": ""
+        },
+        "skills": [
+            5,
+            19,
+            13, 7, 2, 1
+        ],
+        "characters": [1, 2]
     }
 }

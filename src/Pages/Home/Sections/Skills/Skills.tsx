@@ -1,10 +1,10 @@
+import CharacterSelector from "Components/CharacterSelector";
 import Divider from "Components/Divider";
 import { Dropzone, Draggable } from "Components/DragAndDrop";
 import { motion } from "framer-motion";
 import { Flip } from "Lib/AnimationVariants";
 import { CharacterContext } from "Pages/Home/Home";
 import MainAreaBase from "Pages/Home/Sections/MainAreaBase";
-import { CharacterDetails } from "Pages/Home/Sections/Stats/Stats";
 import { SkillIcon } from "Patterns/SkillIcon";
 import React, { useEffect, useState } from "react";
 import { theme } from "Styles/theme";
@@ -32,60 +32,13 @@ const Skills = ({
         {({ setCharacterSkill }) => (
           <MainAreaBase>
             <div>
-              <div style={{ display: "flex", width: "100%" }}>
-                {characters.map((character) => {
-                  const isActive = selectedCharacterId === character.id;
-                  return (
-                    <button
-                      key={character.name}
-                      onClick={() => {
-                        setSelectedCharacterId(character.id);
-                      }}
-                      style={{
-                        minHeight: "150px",
-                        backgroundColor: "rgba(0,0,0,0)",
-                        width: isActive ? "100%" : "100px",
-                        opacity: isActive ? "1" : ".75",
-                        textAlign: "left",
-                        transition: "all .3s",
-                        display: "flex",
-                        padding: theme.spacing.medium,
-                      }}
-                      className={"pixel-border pixel-border-list-horizontal"}
-                    >
-                      <div
-                        style={{
-                          display: "flex",
-                          justifyContent: "center",
-                          alignItems: "center",
-                          overflow: "hidden",
-                          marginRight: theme.spacing.large,
-                          height: "100%",
-                        }}
-                      >
-                        <img
-                          draggable="false"
-                          src={`/images/${character.profilePicture}`}
-                          style={{
-                            height: "100%",
-                          }}
-                        />
-                      </div>
-                      {isActive ? (
-                        <div
-                          style={{
-                            overflow: "hidden",
-                            whiteSpace: "nowrap",
-                            marginLeft: theme.spacing.large,
-                          }}
-                        >
-                          <CharacterDetails character={character} />
-                        </div>
-                      ) : null}
-                    </button>
-                  );
-                })}
-              </div>
+              <CharacterSelector
+                characters={characters}
+                selectedCharacterId={selectedCharacterId}
+                onCharacterSelect={(id) => {
+                  setSelectedCharacterId(id);
+                }}
+              />
 
               {characters.map((character) => {
                 const isActive = selectedCharacterId === character.id;
@@ -151,22 +104,23 @@ const Skills = ({
                                         position: "relative",
                                       }}
                                     >
-                                      <SkillIcon
-                                        src={
-                                          character.skills.find(
-                                            (s) => s.skill.id === id
-                                          )?.skill.icon
-                                        }
-                                        name={
-                                          character?.skills?.find(
-                                            (s) => s.skill.id === id
-                                          )?.skill.name
-                                        }
-                                        size={
-                                          isBeingHoveredOver ? "60px" : "70px"
-                                        }
-                                        offsetY={20}
-                                      />
+                                      <div style={{ position: "absolute" }}>
+                                        <SkillIcon
+                                          src={
+                                            character.skills.find(
+                                              (s) => s.skill.id === id
+                                            )?.skill.icon
+                                          }
+                                          name={
+                                            character?.skills?.find(
+                                              (s) => s.skill.id === id
+                                            )?.skill.name
+                                          }
+                                          size={
+                                            isBeingHoveredOver ? "60px" : "70px"
+                                          }
+                                        />
+                                      </div>
                                     </div>
                                   );
                                 }}
@@ -206,7 +160,7 @@ const Skills = ({
               </h2>
               <Divider />
             </div>
-            <div style={{ display: "flex", flexWrap: "wrap" }}>
+            <div style={{}}>
               {selectedCharacter?.skills?.map((s) => {
                 return !Boolean(
                   selectedCharacter.defaultEquippedSkills.find(
@@ -219,6 +173,7 @@ const Skills = ({
                     style={{
                       margin: theme.spacing.medium,
                       position: "relative",
+                      display: "inline-block",
                     }}
                     draggingImageSrc={s.skill.icon}
                   >
@@ -226,7 +181,6 @@ const Skills = ({
                       src={s.skill.icon}
                       name={s.skill.name}
                       size={"50px"}
-                      offsetY={15}
                     />
                   </Draggable>
                 ) : null;

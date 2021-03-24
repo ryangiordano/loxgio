@@ -1,22 +1,9 @@
-import { motion } from "framer-motion";
+import CharacterDetails from "Components/Stats/Details/CharacterDetails";
 import MainAreaBase from "Pages/Home/Sections/MainAreaBase";
 import Bar from "Patterns/Bar/Bar";
 import React, { useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { theme } from "Styles/theme";
-import { Flip } from "../../../../Lib/AnimationVariants";
-
-export const CharacterDetails = ({ character }: { character: Character }) => {
-  return (
-    <>
-      <h1 className="title" style={{ fontSize: theme.fontSize.large }}>
-        {character.name}
-      </h1>
-      <p>Level {character.level}</p>
-      <p>{character.jobTitle}</p>
-    </>
-  );
-};
 
 const Stats = ({
   setInfoText,
