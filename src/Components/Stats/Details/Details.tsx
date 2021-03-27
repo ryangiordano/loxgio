@@ -1,5 +1,4 @@
 import Divider from "Components/Divider";
-import { CharacterContext } from "Pages/Home/Home";
 import MainAreaBase from "Pages/Home/Sections/MainAreaBase";
 import { SkillIcon } from "Patterns/SkillIcon";
 import React, { useEffect } from "react";
@@ -8,6 +7,7 @@ import { NavLink } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import WriteIn from "Components/WriteIn";
 import CharacterDetails from "Components/Stats/Details/CharacterDetails";
+import { CharacterContext } from "State/CharacterContext";
 
 const Details = ({ setInfoText, match }) => {
   useEffect(() => {
