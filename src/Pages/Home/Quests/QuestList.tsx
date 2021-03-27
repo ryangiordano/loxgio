@@ -2,6 +2,7 @@ import { ModalConsumer, ModalLayout } from "Components/Modal";
 import { motion } from "framer-motion";
 import React, { useState } from "react";
 import { theme } from "Styles/theme";
+import WriteIn from "../../../Components/WriteIn";
 
 export default function QuestList({ title, description, characterPortraits }) {
   const [hovering, setHovering] = useState(false);
@@ -39,7 +40,10 @@ export default function QuestList({ title, description, characterPortraits }) {
                       width: "75vw",
                     }}
                   >
-                    <p>{description}</p>
+                    <WriteIn
+                      text={description}
+                      speedInMilliseconds={10}
+                    ></WriteIn>
                   </ModalLayout>
                 );
               }}
@@ -52,6 +56,7 @@ export default function QuestList({ title, description, characterPortraits }) {
               <span>
                 {characterPortraits.map((c) => (
                   <img
+                    key={c.id}
                     height="25px"
                     style={{ marginRight: theme.spacing.tiny }}
                     src={`/images/${c}`}
