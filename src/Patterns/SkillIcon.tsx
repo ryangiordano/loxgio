@@ -6,9 +6,17 @@ import SkillPopover from "../Components/SkillPopover";
 export const SkillIcon = ({
   name,
   src,
+  onClick,
   size = "70px",
   offsetX = 0,
   offsetY = 0,
+}: {
+  name: string;
+  src: string;
+  onClick?: (e: any) => void;
+  size?: string;
+  offsetX?: number;
+  offsetY?: number;
 }) => {
   return (
     <Popover
@@ -35,6 +43,7 @@ export const SkillIcon = ({
           transformOrigin: "center center",
         },
         className: "pixel-border",
+        onClick: (e) => onClick?.(e),
       }}
       popover={<SkillPopover content={name} />}
     />
