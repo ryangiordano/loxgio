@@ -7,6 +7,12 @@ body {
 
 }
 
+svg {
+  overflow: "visible" !important;
+  transform-origin: 50% 50%;
+
+}
+
 h1,
 h2,
 h3,
