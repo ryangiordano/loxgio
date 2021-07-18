@@ -82,7 +82,7 @@ const Details = ({ setInfoText, match }) => {
                   </AnimatePresence>
                 </div>
                 <Divider />
-                <div>
+                <div style={{ padding: theme.spacing.large }}>
                   <p className="long-form">
                     <WriteIn text={c.details}></WriteIn>
                   </p>

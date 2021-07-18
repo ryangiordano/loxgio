@@ -103,7 +103,12 @@ export const ModalLayout = ({ header, style = {}, children }) => {
             style={{ justifyContent: "space-between", alignItems: "center" }}
           >
             <h1
-              style={{ fontSize: theme.fontSize.large, padding: 0, margin: 0 }}
+              style={{
+                fontSize: theme.fontSize.large,
+                padding: 0,
+                margin: 0,
+                color: theme.backgroundColor.white,
+              }}
             >
               {header}
             </h1>
@@ -111,7 +116,7 @@ export const ModalLayout = ({ header, style = {}, children }) => {
               <button
                 style={{
                   border: "none",
-                  color: "white",
+                  color: theme.backgroundColor.white,
                   backgroundColor: "transparent",
                 }}
                 onClick={() => {
@@ -134,10 +139,11 @@ export const useModal = () => {
   return useContext(ModalContext);
 };
 
-export const withModal = (Component) => (props) => (
-  <ModalContext.Consumer>
-    {(context) => (
-      <Component {...props} {...context} context={{ ...props.context }} />
-    )}
-  </ModalContext.Consumer>
-);
+export const withModal = (Component) => (props) =>
+  (
+    <ModalContext.Consumer>
+      {(context) => (
+        <Component {...props} {...context} context={{ ...props.context }} />
+      )}
+    </ModalContext.Consumer>
+  );

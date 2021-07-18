@@ -11,11 +11,11 @@ const InfoBox = ({ infoText, style = {} }) => {
         marginTop: theme.spacing.giant,
         gridColumnStart: "span 2",
         gridRowStart: 2,
+        color: theme.backgroundColor.white,
         ...style,
       }}
       className="pixel-panel"
     >
-      {/* {infoText} */}
       <WriteIn text={infoText} speedInMilliseconds={20}></WriteIn>
     </div>
   );

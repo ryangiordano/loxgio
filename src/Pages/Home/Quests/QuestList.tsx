@@ -40,10 +40,9 @@ export default function QuestList({ title, description, characterPortraits }) {
                       width: "75vw",
                     }}
                   >
-                    <WriteIn
-                      text={description}
-                      speedInMilliseconds={10}
-                    ></WriteIn>
+                    <p className="long-form">
+                      <WriteIn text={description} speedInMilliseconds={5} />
+                    </p>
                   </ModalLayout>
                 );
               }}
@@ -56,7 +55,7 @@ export default function QuestList({ title, description, characterPortraits }) {
               <span>
                 {characterPortraits.map((c) => (
                   <img
-                    key={c.id}
+                    key={c}
                     height="25px"
                     style={{ marginRight: theme.spacing.tiny }}
                     src={`/images/${c}`}

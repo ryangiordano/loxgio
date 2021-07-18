@@ -47,6 +47,7 @@ export default function Quests({
             }
             selectedCharacterId={selectedCharacterId}
           />
+          <br />
           {quests
             .filter((q) => q.characters.includes(selectedCharacterId))
             .map((q) => {

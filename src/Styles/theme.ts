@@ -1,7 +1,7 @@
 export const theme = {
   backgroundColor: {
     brightWhite: "#f3f3f3",
-    white: "#e9e7e7",
+    white: "#e3ead7",
     green: "#5f965f",
     darkGreen: "#355e51",
     red: "#ff777a",
