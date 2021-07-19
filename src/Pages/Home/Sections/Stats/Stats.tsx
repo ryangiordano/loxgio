@@ -4,6 +4,7 @@ import Bar from "Patterns/Bar/Bar";
 import React, { useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { theme } from "Styles/theme";
+import { isMobile } from "react-device-detect";
 
 const Stats = ({
   setInfoText,
@@ -15,6 +16,50 @@ const Stats = ({
   useEffect(() => {
     setInfoText("Stats");
   }, []);
+
+  const MobileStatsLink = ({ character }) => {
+    return (
+      <div>
+        <div style={{ display: "flex" }}>
+          <img
+            draggable="false"
+            src={`/images/${character.profilePicture}`}
+            width="50%"
+            style={{ marginLeft: "auto", marginRight: "auto" }}
+          />
+        </div>
+
+        <div>
+          <CharacterDetails character={character} />
+        </div>
+      </div>
+    );
+  };
+
+  const DesktopStatsLink = ({ character }) => {
+    return (
+      <div className="detail-grid">
+        <div style={{ marginBottom: "auto", marginTop: "auto" }}>
+          <img draggable="false" src={`/images/${character.profilePicture}`} />
+        </div>
+
+        <div>
+          <CharacterDetails character={character} />
+        </div>
+
+        <div>
+          <span style={{ fontWeight: "bold" }}>HP</span>
+          <div style={{ marginBottom: theme.spacing.medium }}>
+            <Bar color={theme.backgroundColor.red} />
+          </div>
+          <span style={{ fontWeight: "bold" }}>MP</span>
+          <div>
+            <Bar color={theme.backgroundColor.blue} />
+          </div>
+        </div>
+      </div>
+    );
+  };
 
   return (
     <MainAreaBase>
@@ -29,30 +74,15 @@ const Stats = ({
               key={c.id}
               to={`/home/stats/details/${c.id}`}
               style={{
-                color: "white",
+                color: theme.backgroundColor.white,
                 textDecoration: "none",
               }}
             >
-              <div className="detail-grid">
-                <div style={{ marginBottom: "auto", marginTop: "auto" }}>
-                  <img draggable="false" src={`/images/${c.profilePicture}`} />
-                </div>
-
-                <div>
-                  <CharacterDetails character={c} />
-                </div>
-
-                <div>
-                  <span style={{ fontWeight: "bold" }}>HP</span>
-                  <div style={{ marginBottom: theme.spacing.medium }}>
-                    <Bar color={theme.backgroundColor.red} />
-                  </div>
-                  <span style={{ fontWeight: "bold" }}>MP</span>
-                  <div>
-                    <Bar color={theme.backgroundColor.blue} />
-                  </div>
-                </div>
-              </div>
+              {isMobile ? (
+                <MobileStatsLink character={c} />
+              ) : (
+                <DesktopStatsLink character={c} />
+              )}
             </NavLink>
           </div>
         );

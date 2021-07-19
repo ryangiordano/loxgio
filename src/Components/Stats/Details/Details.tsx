@@ -8,6 +8,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import WriteIn from "Components/WriteIn";
 import CharacterDetails from "Components/Stats/Details/CharacterDetails";
 import { CharacterContext } from "State/CharacterContext";
+import { isMobile } from "react-device-detect";
 
 const Details = ({ setInfoText, match }) => {
   useEffect(() => {
@@ -25,7 +26,18 @@ const Details = ({ setInfoText, match }) => {
             }
             return (
               <>
-                <div className="detail-grid">
+                <div
+                  className={isMobile ? "" : "detail-grid"}
+                  style={
+                    isMobile
+                      ? {
+                          display: "flex",
+                          flexDirection: "column",
+                          alignItems: "center",
+                        }
+                      : {}
+                  }
+                >
                   <div>
                     <img
                       draggable="false"
@@ -33,9 +45,30 @@ const Details = ({ setInfoText, match }) => {
                     />
                   </div>
 
-                  <div>
+                  <div
+                    style={
+                      isMobile
+                        ? {
+                            display: "flex",
+                            flexDirection: "column",
+                            alignItems: "center",
+                          }
+                        : {}
+                    }
+                  >
                     <CharacterDetails character={c} />
-                    <span>{c.email}</span>
+                    <span
+                      style={
+                        isMobile
+                          ? {
+                              marginTop: theme.spacing.giant,
+                              fontSize: theme.fontSize.small,
+                            }
+                          : {}
+                      }
+                    >
+                      {c.email}
+                    </span>
                   </div>
 
                   <AnimatePresence>
@@ -82,8 +115,21 @@ const Details = ({ setInfoText, match }) => {
                   </AnimatePresence>
                 </div>
                 <Divider />
-                <div style={{ padding: theme.spacing.large }}>
-                  <p className="long-form">
+                <div
+                  style={{
+                    padding: isMobile ? 0 : theme.spacing.large,
+                  }}
+                >
+                  <p
+                    className="long-form"
+                    style={
+                      isMobile
+                        ? {
+                            fontSize: theme.fontSize.small,
+                          }
+                        : {}
+                    }
+                  >
                     <WriteIn text={c.details}></WriteIn>
                   </p>
                 </div>
@@ -92,6 +138,7 @@ const Details = ({ setInfoText, match }) => {
           }}
         </CharacterContext.Consumer>
       </MainAreaBase>
+
       <MainAreaBase style={{ marginTop: theme.spacing.giant }}>
         <NavLink
           to={"/home/stats"}

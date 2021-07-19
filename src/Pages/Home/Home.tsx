@@ -11,6 +11,7 @@ import { motion } from "framer-motion";
 import Quests from "Pages/Home/Quests/Quests";
 import { Flip } from "../../Lib/AnimationVariants";
 import { CharacterState } from "State/CharacterContext";
+import { isMobile } from "react-device-detect";
 
 const GridContainer = ({ children }) => {
   return <div className="container">{children}</div>;
@@ -43,8 +44,13 @@ const Home = ({ match }) => {
                 marginTop: theme.spacing.large,
               }}
             />
-            <div className="d-flex">
-              <div style={{ marginRight: theme.spacing.large }}>
+            <div className={isMobile ? undefined : "d-flex"}>
+              <div
+                style={{
+                  marginRight: isMobile ? undefined : theme.spacing.large,
+                  marginBottom: isMobile ? theme.spacing.giant : undefined,
+                }}
+              >
                 <SideNav />
               </div>
               <div style={{ flexGrow: 1 }}>
