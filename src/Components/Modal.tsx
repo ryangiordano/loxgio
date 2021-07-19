@@ -2,6 +2,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import React, { useState, useContext } from "react";
 import { theme } from "Styles/theme";
 import { PixelCard } from "./PixelCard";
+import { isMobile } from "react-device-detect";
 
 export interface ModalContextProps {
   openModal: (Component: JSX.Element) => void;
@@ -104,7 +105,9 @@ export const ModalLayout = ({ header, style = {}, children }) => {
           >
             <h1
               style={{
-                fontSize: theme.fontSize.large,
+                fontSize: isMobile
+                  ? theme.fontSize.medium
+                  : theme.fontSize.large,
                 padding: 0,
                 margin: 0,
                 color: theme.backgroundColor.white,

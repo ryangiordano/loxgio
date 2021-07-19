@@ -4,6 +4,7 @@ import { SkillIcon } from "Patterns/SkillIcon";
 import React, { useContext } from "react";
 import { CharacterContext } from "State/CharacterContext";
 import { theme } from "Styles/theme";
+import { isMobile } from "react-device-detect";
 
 export default function EquippedSkills({
   selectedCharacter,
@@ -33,7 +34,7 @@ export default function EquippedSkills({
         <Divider />
       </div>
       <div style={{ display: "flex" }}>
-        {selectedCharacter?.defaultEquippedSkills.map((id, index) => {
+        {selectedCharacter?.defaultEquippedSkills.map((id) => {
           const skillIconActive =
             selectedSkillId != null && selectedSkillId !== id;
           return (
@@ -71,6 +72,7 @@ export default function EquippedSkills({
                     setSelectedSkillId(id);
                   }
                 }}
+                size={isMobile ? "55px" : undefined}
               />
             </div>
           );

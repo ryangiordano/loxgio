@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import React, { useState } from "react";
 import { theme } from "Styles/theme";
 import WriteIn from "../../../Components/WriteIn";
+import { isMobile } from "react-device-detect";
 
 export default function QuestList({ title, description, characterPortraits }) {
   const [hovering, setHovering] = useState(false);
@@ -17,8 +18,14 @@ export default function QuestList({ title, description, characterPortraits }) {
               hovering || focused ? "pixel-border" : "borderless"
             }`}
             style={{
-              backgroundColor: "transparent",
+              backgroundColor: theme.backgroundColor.green,
+              borderRadius: "5px",
               borderWidth: "3px",
+              paddingLeft: 0,
+              paddingTop: theme.spacing.tiny,
+              paddingRight: 0,
+              paddingBottom: theme.spacing.tiny,
+              marginTop: theme.spacing.small,
             }}
             variants={{
               hidden: { opacity: 0, x: -30 },
@@ -31,17 +38,24 @@ export default function QuestList({ title, description, characterPortraits }) {
                 color: theme.backgroundColor.white,
                 border: "none",
                 backgroundColor: "transparent",
+                textAlign: "left",
               }}
               onClick={() => {
                 openModal(
                   <ModalLayout
                     header={<>{title}</>}
                     style={{
-                      width: "75vw",
+                      width: isMobile ? null : "75vw",
                     }}
                   >
-                    <p className="long-form">
-                      <WriteIn text={description} speedInMilliseconds={5} />
+                    <p
+                      className="long-form"
+                      style={isMobile ? { fontSize: theme.fontSize.small } : {}}
+                    >
+                      <WriteIn
+                        text={description}
+                        speedInMilliseconds={5}
+                      ></WriteIn>
                     </p>
                   </ModalLayout>
                 );
