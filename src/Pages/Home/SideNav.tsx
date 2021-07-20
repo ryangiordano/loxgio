@@ -4,7 +4,7 @@ import { theme } from "Styles/theme";
 import { NavLink, useLocation } from "react-router-dom";
 import { isMobile } from "react-device-detect";
 
-const SideNavItem = ({
+const DesktopNavItem = ({
   to,
   text,
   last,
@@ -36,27 +36,80 @@ const SideNavItem = ({
     </li>
   );
 };
-const SideNav = (props) => {
+
+const MobileSideNavItem = ({ to, text, icon }) => {
+  const l = useLocation();
+  const active = l.pathname.includes(to);
   return (
     <div
-      style={{
-        padding: theme.spacing.large,
-      }}
       className="pixel-panel"
+      style={{
+        padding: theme.spacing.giant,
+        display: "block",
+        width: "20%",
+        backgroundColor: active ? theme.backgroundColor.green : undefined,
+      }}
     >
-      <ul
-        className="list-group"
+      <NavLink
+        to={to}
         style={{
-          whiteSpace: "nowrap",
+          color: theme.backgroundColor.white,
+          textDecoration: "none",
+          display: "flex",
+          alignItems: "center",
         }}
       >
-        <SideNavItem to={"/home/stats"} text={"Stats"} />
-        <SideNavItem to={"/home/quests"} text={"Quest Log"} />
-        <SideNavItem to={"/home/skills"} text={"Skills"} />
-        {isMobile ? null : <Divider />}
-        <SideNavItem to={"/title"} text={"Title Screen"} last />
-      </ul>
+        <img
+          src={`/images/${icon}`}
+          style={{ height: "25px", marginLeft: "auto", marginRight: "auto" }}
+        />
+      </NavLink>
     </div>
   );
+};
+const SideNav = () => {
+  const navItems = [
+    { to: "/home/stats", text: "Stats", icon: "stats.png" },
+    { to: "/home/quests", text: "Quest Log", icon: "quest.png" },
+    { to: "/home/skills", text: "Skills", icon: "skills.png" },
+  ];
+  const MobileSideNav = () => {
+    return (
+      <nav style={{ display: "flex", justifyContent: "space-between" }}>
+        {navItems.map((n) => {
+          return <MobileSideNavItem to={n.to} text={n.text} icon={n.icon} />;
+        })}
+        <MobileSideNavItem
+          to={"/title"}
+          text={"Title Screen"}
+          icon={"home.png"}
+        />
+      </nav>
+    );
+  };
+  const DesktopSideNav = () => {
+    return (
+      <nav
+        style={{
+          padding: theme.spacing.large,
+        }}
+        className="pixel-panel"
+      >
+        <ul
+          className="list-group"
+          style={{
+            whiteSpace: "nowrap",
+          }}
+        >
+          {navItems.map((n) => (
+            <DesktopNavItem to={n.to} text={n.text} />
+          ))}
+          {isMobile ? null : <Divider />}
+          <DesktopNavItem to={"/title"} text={"Title Screen"} last />
+        </ul>
+      </nav>
+    );
+  };
+  return isMobile ? <MobileSideNav /> : <DesktopSideNav />;
 };
 export default SideNav;

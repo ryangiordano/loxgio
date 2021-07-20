@@ -24,7 +24,7 @@ const Stats = ({
           <img
             draggable="false"
             src={`/images/${character.profilePicture}`}
-            width="50%"
+            width="35%"
             style={{ marginLeft: "auto", marginRight: "auto" }}
           />
         </div>
