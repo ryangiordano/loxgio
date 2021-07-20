@@ -60,6 +60,7 @@ const MobileSideNavItem = ({ to, text, icon }) => {
         }}
       >
         <img
+          aria-label={text}
           src={`/images/${icon}`}
           style={{ height: "25px", marginLeft: "auto", marginRight: "auto" }}
         />

@@ -1,7 +1,7 @@
 import Divider from "Components/Divider";
 import MainAreaBase from "Pages/Home/Sections/MainAreaBase";
 import { SkillIcon } from "Patterns/SkillIcon";
-import React, { useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import { theme } from "Styles/theme";
 import { NavLink } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
@@ -11,132 +11,127 @@ import { CharacterContext } from "State/CharacterContext";
 import { isMobile } from "react-device-detect";
 
 const Details = ({ setInfoText, match }) => {
+  const { characters } = useContext(CharacterContext);
   useEffect(() => {
-    setInfoText("Stats");
+    setInfoText("About our stats");
   }, []);
   const characterId = match.params.characterId;
+  const c = characters.find((c) => c.id === Number(characterId));
+  useEffect(() => {
+    setInfoText(`About ${c?.name}`);
+  }, []);
+  if (!c) {
+    return null;
+  }
   return (
     <>
       <MainAreaBase>
-        <CharacterContext.Consumer>
-          {({ characters }) => {
-            const c = characters.find((c) => c.id === Number(characterId));
-            if (!c) {
-              return null;
-            }
-            return (
-              <>
-                <div
-                  className={isMobile ? "" : "detail-grid"}
-                  style={
-                    isMobile
-                      ? {
-                          display: "flex",
-                          flexDirection: "column",
-                          alignItems: "center",
-                        }
-                      : {}
+        <>
+          <div
+            className={isMobile ? "" : "detail-grid"}
+            style={
+              isMobile
+                ? {
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
                   }
-                >
-                  <div>
-                    <img
-                      draggable="false"
-                      src={`/images/${c.profilePicture}`}
-                    />
-                  </div>
+                : {}
+            }
+          >
+            <div>
+              <img draggable="false" src={`/images/${c.profilePicture}`} />
+            </div>
 
-                  <div
-                    style={
-                      isMobile
-                        ? {
-                            display: "flex",
-                            flexDirection: "column",
-                            alignItems: "center",
-                          }
-                        : {}
+            <div
+              style={
+                isMobile
+                  ? {
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
                     }
-                  >
-                    <CharacterDetails character={c} />
-                    <span
-                      style={
-                        isMobile
-                          ? {
-                              marginTop: theme.spacing.giant,
-                              fontSize: theme.fontSize.small,
-                            }
-                          : {}
+                  : {}
+              }
+            >
+              <CharacterDetails character={c} />
+              <span
+                style={
+                  isMobile
+                    ? {
+                        marginTop: theme.spacing.giant,
+                        fontSize: theme.fontSize.small,
                       }
-                    >
-                      {c.email}
-                    </span>
-                  </div>
+                    : {}
+                }
+              >
+                {c.email}
+              </span>
+            </div>
 
-                  <AnimatePresence>
+            <AnimatePresence>
+              <motion.div
+                variants={{
+                  hidden: { opacity: 0 },
+                  show: {
+                    opacity: 1,
+                    transition: {
+                      staggerChildren: 0.05,
+                      delayChildren: 0.3,
+                    },
+                  },
+                }}
+                initial="hidden"
+                animate="show"
+                style={{ display: "flex", flexWrap: "wrap" }}
+              >
+                {c.skills.map((s) => {
+                  return (
                     <motion.div
                       variants={{
-                        hidden: { opacity: 0 },
-                        show: {
-                          opacity: 1,
-                          transition: {
-                            staggerChildren: 0.05,
-                            delayChildren: 0.3,
-                          },
-                        },
+                        hidden: { scale: 0, top: 100 },
+                        show: { scale: 1, top: 30 },
                       }}
-                      initial="hidden"
-                      animate="show"
-                      style={{ display: "flex", flexWrap: "wrap" }}
+                      key={s.skill.id}
                     >
-                      {c.skills.map((s) => {
-                        return (
-                          <motion.div
-                            variants={{
-                              hidden: { scale: 0, top: 100 },
-                              show: { scale: 1, top: 30 },
-                            }}
-                            key={s.skill.id}
-                          >
-                            <div
-                              style={{
-                                margin: theme.spacing.small,
-                                position: "relative",
-                              }}
-                            >
-                              <SkillIcon
-                                src={s.skill.icon}
-                                name={s.skill.name}
-                                size={"35px"}
-                              />
-                            </div>
-                          </motion.div>
-                        );
-                      })}
+                      <div
+                        style={{
+                          margin: theme.spacing.small,
+                          position: "relative",
+                        }}
+                      >
+                        <SkillIcon
+                          src={s.skill.icon}
+                          name={s.skill.name}
+                          size={"35px"}
+                        />
+                      </div>
                     </motion.div>
-                  </AnimatePresence>
-                </div>
-                <Divider />
-                <div
-                  style={{
-                    padding: isMobile ? 0 : theme.spacing.large,
-                  }}
-                >
-                  <p
-                    className="long-form"
-                    style={
-                      isMobile
-                        ? {
-                            fontSize: theme.fontSize.small,
-                          }
-                        : {}
+                  );
+                })}
+              </motion.div>
+            </AnimatePresence>
+          </div>
+          <Divider />
+          <div
+            style={{
+              padding: isMobile ? 0 : theme.spacing.large,
+            }}
+          >
+            <p
+              className="long-form"
+              style={
+                isMobile
+                  ? {
+                      fontSize: theme.fontSize.small,
                     }
-                  >
-                    <WriteIn text={c.details}></WriteIn>
-                  </p>
-                </div>
-              </>
-            );
-          }}
-        </CharacterContext.Consumer>
+                  : {}
+              }
+            >
+              <WriteIn text={c.details}></WriteIn>
+            </p>
+          </div>
+        </>
       </MainAreaBase>
 
       <MainAreaBase style={{ marginTop: theme.spacing.giant }}>

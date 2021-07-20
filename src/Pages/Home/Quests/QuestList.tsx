@@ -9,6 +9,9 @@ export default function QuestList({ title, description, characterPortraits }) {
   const [hovering, setHovering] = useState(false);
   const [focused, setFocused] = useState(false);
 
+  const hidden = isMobile ? { opacity: 0, y: 30 } : { opacity: 0, x: -30 };
+  const show = isMobile ? { opacity: 1, y: 0 } : { opacity: 1, x: 0 };
+
   return (
     <ModalConsumer>
       {({ openModal }) => {
@@ -28,8 +31,8 @@ export default function QuestList({ title, description, characterPortraits }) {
               marginTop: theme.spacing.small,
             }}
             variants={{
-              hidden: { opacity: 0, x: -30 },
-              show: { opacity: 1, x: 0 },
+              hidden,
+              show,
             }}
           >
             <button

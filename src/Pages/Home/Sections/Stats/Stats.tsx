@@ -14,7 +14,7 @@ const Stats = ({
   setInfoText: (t: string) => void;
 }) => {
   useEffect(() => {
-    setInfoText("Stats");
+    setInfoText("Learn more about our stats");
   }, []);
 
   const MobileStatsLink = ({ character }) => {
