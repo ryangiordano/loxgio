@@ -16,11 +16,9 @@ const ModalContext = React.createContext({
 
 export const Modal = (props) => {
   const [modalOpen, setModalOpen] = useState(false);
-  const [modalTransitionOpen, setModalTransitionOpen] = useState(false);
   const [modalComponent, setModalComponent] = useState(null);
   const closeModal = () => {
     setModalOpen(false);
-    setModalTransitionOpen(false);
   };
   return (
     <>
@@ -28,7 +26,6 @@ export const Modal = (props) => {
         value={{
           openModal: (modalComponent) => {
             setModalOpen(true);
-            setModalTransitionOpen(true);
             setModalComponent(modalComponent);
           },
           closeModal,

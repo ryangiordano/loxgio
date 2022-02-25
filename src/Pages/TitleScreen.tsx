@@ -1,4 +1,4 @@
-import Logo from "Components/Logo";
+import Logo from "Components/Shared/Logo";
 import React from "react";
 import { NavLink } from "react-router-dom";
 import { theme } from "Styles/theme";

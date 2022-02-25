@@ -1,4 +1,4 @@
-import Divider from "Components/Divider";
+import Divider from "Components/Shared/Divider";
 import React from "react";
 import { theme } from "Styles/theme";
 import { NavLink, useLocation } from "react-router-dom";

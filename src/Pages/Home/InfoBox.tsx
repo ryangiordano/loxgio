@@ -1,4 +1,4 @@
-import WriteIn from "Components/WriteIn";
+import WriteIn from "Components/Shared/WriteIn";
 import React from "react";
 import { theme } from "Styles/theme";
 

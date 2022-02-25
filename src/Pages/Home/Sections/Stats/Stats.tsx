@@ -15,13 +15,14 @@ const Stats = ({
 }) => {
   useEffect(() => {
     setInfoText("Learn more about our stats");
-  }, []);
+  }, [setInfoText]);
 
   const MobileStatsLink = ({ character }) => {
     return (
       <div>
         <div style={{ display: "flex" }}>
           <img
+            alt={character.name}
             draggable="false"
             src={`/images/${character.profilePicture}`}
             width="35%"
@@ -40,7 +41,11 @@ const Stats = ({
     return (
       <div className="detail-grid">
         <div style={{ marginBottom: "auto", marginTop: "auto" }}>
-          <img draggable="false" src={`/images/${character.profilePicture}`} />
+          <img
+            alt={character.name}
+            draggable="false"
+            src={`/images/${character.profilePicture}`}
+          />
         </div>
 
         <div>

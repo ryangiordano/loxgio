@@ -18,20 +18,19 @@ const Popover = ({
 }) => {
   const id = new Date().getTime();
 
-  const resetPopover = ({ id: openedId }) => {
-    if (openedId !== id && mounted.current) {
-      setOpen(false);
-    }
-  };
-
   useEffect(() => {
+    const resetPopover = ({ id: openedId }) => {
+      if (openedId !== id && mounted.current) {
+        setOpen(false);
+      }
+    };
     EventBus.on("popover-opened", resetPopover);
     mounted.current = true;
     return () => {
       mounted.current = false;
       EventBus.remove("popover-opened", resetPopover);
     };
-  }, []);
+  }, [id]);
 
   const referenceElement = useRef(null);
   const popperElement = useRef(null);

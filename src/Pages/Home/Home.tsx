@@ -1,6 +1,6 @@
-import React, { useState, createContext } from "react";
+import React, { useState } from "react";
 import DataService from "Services/DataService";
-import { Route, Redirect, useLocation } from "react-router-dom";
+import { Route, Redirect } from "react-router-dom";
 import Details from "Components/Stats/Details/Details";
 import Stats from "Pages/Home/Sections/Stats/Stats";
 import SideNav from "Pages/Home/SideNav";
@@ -31,7 +31,7 @@ const obj = {
 
 const Home = ({ match }) => {
   const dataService = new DataService();
-  const [quests, setQuests] = useState(dataService.getAllQuests());
+  const [quests] = useState(dataService.getAllQuests());
   const [infoText, setInfoText] = useState("Great job");
   return (
     <CharacterState>

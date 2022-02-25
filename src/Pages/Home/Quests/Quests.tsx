@@ -1,9 +1,8 @@
-import CharacterSelector from "Components/CharacterSelector";
+import CharacterSelector from "Components/Shared/CharacterSelector";
 import { motion } from "framer-motion";
 import MainAreaBase from "Pages/Home/Sections/MainAreaBase";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import QuestList from "./QuestList";
-import { useEffect } from "react";
 
 export default function Quests({
   setInfoText,
@@ -16,7 +15,7 @@ export default function Quests({
 }) {
   useEffect(() => {
     setInfoText("View various quests we've completed.");
-  }, []);
+  }, [setInfoText]);
 
   const [selectedCharacterId, setSelectedCharacterId] = useState(
     characters[0].id
@@ -56,8 +55,8 @@ export default function Quests({
                   key={q.id}
                   title={q.title}
                   description={q.description}
-                  characterPortraits={q.characters.map(
-                    (id) => characters.find((c) => c.id === id)?.profilePicture
+                  characters={q.characters.map((id) =>
+                    characters.find((c) => c.id === id)
                   )}
                 />
               );

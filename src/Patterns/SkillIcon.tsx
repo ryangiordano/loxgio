@@ -1,7 +1,7 @@
+import SkillPopover from "Components/Shared/SkillPopover";
 import Popover from "Patterns/Popover";
 import React from "react";
 import { theme } from "Styles/theme";
-import SkillPopover from "../Components/SkillPopover";
 
 export const SkillIcon = ({
   name,

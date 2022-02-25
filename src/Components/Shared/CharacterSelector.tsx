@@ -46,6 +46,7 @@ export default function CharacterSelector({
                 }}
               >
                 <img
+                  alt={character.name}
                   draggable="false"
                   src={`/images/${character.profilePicture}`}
                   style={{
@@ -94,6 +95,7 @@ export default function CharacterSelector({
               className={"pixel-border pixel-border-list-vertical"}
             >
               <img
+                alt={character.name}
                 draggable="false"
                 src={`/images/${character.profilePicture}`}
                 style={{

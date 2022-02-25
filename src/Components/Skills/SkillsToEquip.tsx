@@ -1,4 +1,4 @@
-import Divider from "Components/Divider";
+import Divider from "Components/Shared/Divider";
 import { SkillIcon } from "Patterns/SkillIcon";
 import React, { useContext } from "react";
 import { CharacterContext } from "State/CharacterContext";

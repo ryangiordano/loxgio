@@ -1,11 +1,11 @@
-import { ModalConsumer, ModalLayout } from "Components/Modal";
+import { ModalConsumer, ModalLayout } from "Components/Shared/Modal";
 import { motion } from "framer-motion";
 import React, { useState } from "react";
 import { theme } from "Styles/theme";
-import WriteIn from "../../../Components/WriteIn";
+import WriteIn from "Components/Shared/WriteIn";
 import { isMobile } from "react-device-detect";
 
-export default function QuestList({ title, description, characterPortraits }) {
+export default function QuestList({ title, description, characters }) {
   const [hovering, setHovering] = useState(false);
   const [focused, setFocused] = useState(false);
 
@@ -70,12 +70,13 @@ export default function QuestList({ title, description, characterPortraits }) {
             >
               &#x3e; {title}{" "}
               <span>
-                {characterPortraits.map((c) => (
+                {characters.map((c) => (
                   <img
-                    key={c}
+                    alt={c.name}
+                    key={c.profilePicture}
                     height="25px"
                     style={{ marginRight: theme.spacing.tiny }}
-                    src={`/images/${c}`}
+                    src={`/images/${c.profilePicture}`}
                   />
                 ))}
               </span>

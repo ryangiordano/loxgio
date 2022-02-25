@@ -3,8 +3,6 @@ import Characters from "../Data/Characters.json";
 import Quests from "../Data/Quests.json";
 
 export default class CharacterService {
-  constructor() {}
-
   getCharacter(id: number): Character {
     const characterToReturn = Characters[id];
     if (!characterToReturn) {
@@ -64,13 +62,10 @@ export default class CharacterService {
     return quests;
   }
 
+  //TODO: Implement;
   getAllQuestsForCharacter(characterId: number): Character[] {
-    const quests = Object.keys(Quests).map((k) => {
-
-    });
-    const characters = Object.keys(Characters).map((k) =>
-      this.getCharacter(Characters[k].id)
+    return Object.keys(Quests).map((key) =>
+      Quests[key].characters.includes(characterId)
     );
-    return characters;
   }
 }

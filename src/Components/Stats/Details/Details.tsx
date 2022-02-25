@@ -1,11 +1,11 @@
-import Divider from "Components/Divider";
+import Divider from "Components/Shared/Divider";
 import MainAreaBase from "Pages/Home/Sections/MainAreaBase";
 import { SkillIcon } from "Patterns/SkillIcon";
 import React, { useContext, useEffect } from "react";
 import { theme } from "Styles/theme";
 import { NavLink } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
-import WriteIn from "Components/WriteIn";
+import WriteIn from "Components/Shared/WriteIn";
 import CharacterDetails from "Components/Stats/Details/CharacterDetails";
 import { CharacterContext } from "State/CharacterContext";
 import { isMobile } from "react-device-detect";
@@ -14,12 +14,14 @@ const Details = ({ setInfoText, match }) => {
   const { characters } = useContext(CharacterContext);
   useEffect(() => {
     setInfoText("About our stats");
-  }, []);
+  }, [setInfoText]);
+
   const characterId = match.params.characterId;
   const c = characters.find((c) => c.id === Number(characterId));
+
   useEffect(() => {
     setInfoText(`About ${c?.name}`);
-  }, []);
+  }, [setInfoText, c?.name]);
   if (!c) {
     return null;
   }
@@ -40,7 +42,11 @@ const Details = ({ setInfoText, match }) => {
             }
           >
             <div>
-              <img draggable="false" src={`/images/${c.profilePicture}`} />
+              <img
+                alt={c.name}
+                draggable="false"
+                src={`/images/${c.profilePicture}`}
+              />
             </div>
 
             <div

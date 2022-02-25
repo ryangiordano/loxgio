@@ -1,6 +1,5 @@
-import React, { useContext, createContext, useState } from "react";
+import React, { createContext, useState } from "react";
 import DataService from "Services/DataService";
-import { useLocation } from "react-router-dom";
 
 export const CharacterContext = createContext<{
   characters: Character[];

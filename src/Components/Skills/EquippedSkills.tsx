@@ -1,10 +1,9 @@
-import Divider from "Components/Divider";
-import { Dropzone } from "Components/DragAndDrop";
 import { SkillIcon } from "Patterns/SkillIcon";
 import React, { useContext } from "react";
 import { CharacterContext } from "State/CharacterContext";
 import { theme } from "Styles/theme";
 import { isMobile } from "react-device-detect";
+import Divider from "Components/Shared/Divider";
 
 export default function EquippedSkills({
   selectedCharacter,
@@ -78,6 +77,7 @@ export default function EquippedSkills({
           );
         })}
         <img
+          alt={selectedCharacter.name}
           draggable="false"
           height={"75px"}
           style={{ marginLeft: "auto" }}
