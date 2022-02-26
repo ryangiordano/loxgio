@@ -12,6 +12,7 @@ import Quests from "Pages/Home/Quests/Quests";
 import { Flip } from "../../Lib/AnimationVariants";
 import { CharacterState } from "State/CharacterContext";
 import { isMobile } from "react-device-detect";
+import AnimatedWatermark from "Components/Shared/AnimatedWatermark";
 
 const GridContainer = ({ children }) => {
   return <div className="container">{children}</div>;
@@ -34,64 +35,73 @@ const Home = ({ match }) => {
   const [quests] = useState(dataService.getAllQuests());
   const [infoText, setInfoText] = useState("Great job");
   return (
-    <CharacterState>
-      {({ characters }) => (
-        <GridContainer>
-          <motion.div {...obj}>
-            <InfoBox
-              infoText={infoText}
-              style={{
-                marginTop: theme.spacing.large,
-              }}
-            />
-            <div className={isMobile ? undefined : "d-flex"}>
-              <div
+    <>
+      <AnimatedWatermark />
+      <CharacterState>
+        {({ characters }) => (
+          <GridContainer>
+            <motion.div {...obj}>
+              <InfoBox
+                infoText={infoText}
                 style={{
-                  marginRight: isMobile ? undefined : theme.spacing.large,
-                  marginBottom: isMobile ? theme.spacing.giant : undefined,
+                  marginTop: theme.spacing.large,
                 }}
-              >
-                <SideNav />
-              </div>
-              <div style={{ flexGrow: 1 }}>
-                <Route
-                  exact
-                  path={`${match.path}/stats/details/:characterId`}
-                  render={(props) => (
+              />
+              <div className={isMobile ? undefined : "d-flex"}>
+                <div
+                  style={{
+                    marginRight: isMobile ? undefined : theme.spacing.large,
+                    marginBottom: isMobile ? theme.spacing.giant : undefined,
+                  }}
+                >
+                  <SideNav />
+                </div>
+                <div style={{ flexGrow: 1 }}>
+                  <Route
+                    exact
+                    path={`${match.path}/stats/details/:characterId`}
+                    render={(props) => (
+                      <motion.div {...Flip}>
+                        <Details setInfoText={setInfoText} {...props} />
+                      </motion.div>
+                    )}
+                  />
+
+                  <Route exact path={`${match.path}/stats`}>
                     <motion.div {...Flip}>
-                      <Details setInfoText={setInfoText} {...props} />
+                      <Stats
+                        characters={characters}
+                        setInfoText={setInfoText}
+                      />
                     </motion.div>
-                  )}
-                />
+                  </Route>
 
-                <Route exact path={`${match.path}/stats`}>
-                  <motion.div {...Flip}>
-                    <Stats characters={characters} setInfoText={setInfoText} />
-                  </motion.div>
-                </Route>
+                  <Route path={`${match.path}/quests`}>
+                    <motion.div {...Flip}>
+                      <Quests
+                        setInfoText={setInfoText}
+                        characters={characters}
+                        quests={quests}
+                      />
+                    </motion.div>
+                  </Route>
 
-                <Route path={`${match.path}/quests`}>
-                  <motion.div {...Flip}>
-                    <Quests
-                      setInfoText={setInfoText}
-                      characters={characters}
-                      quests={quests}
-                    />
-                  </motion.div>
-                </Route>
-
-                <Route path={`${match.path}/skills`}>
-                  <motion.div {...Flip}>
-                    <Skills setInfoText={setInfoText} characters={characters} />
-                  </motion.div>
-                </Route>
-                <Redirect exact from="" to={`${match.path}/stats`} />
+                  <Route path={`${match.path}/skills`}>
+                    <motion.div {...Flip}>
+                      <Skills
+                        setInfoText={setInfoText}
+                        characters={characters}
+                      />
+                    </motion.div>
+                  </Route>
+                  <Redirect exact from="" to={`${match.path}/stats`} />
+                </div>
               </div>
-            </div>
-          </motion.div>
-        </GridContainer>
-      )}
-    </CharacterState>
+            </motion.div>
+          </GridContainer>
+        )}
+      </CharacterState>
+    </>
   );
 };
 export default Home;

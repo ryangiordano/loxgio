@@ -131,7 +131,15 @@ export const ModalLayout = ({ header, style = {}, children, footer }) => {
       }
     >
       {children}
-      {footer}
+      <div
+        style={{
+          position: "absolute",
+          paddingBottom: theme.spacing.large,
+          bottom: 0,
+        }}
+      >
+        {footer}
+      </div>
     </PixelCard>
   );
 };

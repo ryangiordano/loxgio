@@ -1,10 +1,9 @@
-import { ModalConsumer, ModalLayout } from "Components/Shared/Modal";
+import { ModalConsumer } from "Components/Shared/Modal";
 import { motion } from "framer-motion";
 import React, { useState } from "react";
 import { theme } from "Styles/theme";
 import { isMobile } from "react-device-detect";
 import QuestModal from "Components/Quests/QuestModal";
-import { SkillIcon } from "Patterns/SkillIcon";
 
 export default function QuestList({
   quest,

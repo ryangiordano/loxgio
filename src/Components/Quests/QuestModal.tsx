@@ -11,9 +11,11 @@ function QuestModal({ quest }: { quest: Quest }) {
       header={<>{quest.title}</>}
       style={{
         width: isMobile ? null : "75vw",
+        minHeight: isMobile ? "80vh" : "400px",
       }}
       footer={quest.skills.map((s) => (
         <div
+          key={s.skill.name}
           style={{ marginRight: theme.spacing.small, display: "inline-block" }}
         >
           <SkillIcon

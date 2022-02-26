@@ -4,18 +4,34 @@ import { NavLink, useHistory } from "react-router-dom";
 import { theme } from "Styles/theme";
 import anime from "animejs";
 import { isMobile } from "react-device-detect";
-const TitleScreen = () => {
-  const history = useHistory();
-  const navigate = React.useCallback(() => history.push("/home"), [history]);
-  React.useEffect(() => {
-    document.addEventListener("keydown", navigate);
-    return () => {
-      document.removeEventListener("keydown", navigate);
-    };
-  });
+import AnimatedWatermark from "Components/Shared/AnimatedWatermark";
 
+function useAnimateIn({
+  watermarkRef,
+  boxRef,
+  firstWordRef,
+  secondWordRef,
+  thirdWordRef,
+}) {
   React.useEffect(() => {
     const tl = anime.timeline();
+    tl.add({
+      targets: watermarkRef.current,
+      opacity: [0, 0.15],
+      duration: 300,
+      scaleX: [0.8, 1.1],
+      scaleY: [0.8, 1.1],
+      easing: "easeInOutQuad",
+    });
+    tl.add({
+      targets: watermarkRef.current,
+      opacity: [0.15, 0.1],
+      duration: 500,
+      scaleX: [1.1, 1],
+      scaleY: [1.1, 1],
+      easing: "easeInOutQuad",
+    });
+
     [
       boxRef.current,
       firstWordRef.current,
@@ -31,11 +47,31 @@ const TitleScreen = () => {
         easing: "easeInOutQuad",
       });
     });
-  }, []);
+  }, [watermarkRef, boxRef, firstWordRef, secondWordRef, thirdWordRef]);
+}
+
+const TitleScreen = () => {
+  const history = useHistory();
+  const navigate = React.useCallback(() => history.push("/home"), [history]);
+  React.useEffect(() => {
+    document.addEventListener("keydown", navigate);
+    return () => {
+      document.removeEventListener("keydown", navigate);
+    };
+  });
+
   const boxRef = React.useRef(null);
   const firstWordRef = React.useRef(null);
   const secondWordRef = React.useRef(null);
   const thirdWordRef = React.useRef(null);
+  const watermarkRef = React.useRef<HTMLImageElement>(null);
+  useAnimateIn({
+    boxRef,
+    firstWordRef,
+    secondWordRef,
+    thirdWordRef,
+    watermarkRef,
+  });
   return (
     <div
       style={{
@@ -49,6 +85,7 @@ const TitleScreen = () => {
       }}
     >
       <div style={{ width: isMobile ? "80%" : "50%" }}>
+        <AnimatedWatermark imageRef={watermarkRef} />
         <Logo
           boxRef={boxRef}
           firstWordRef={firstWordRef}
