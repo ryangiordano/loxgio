@@ -3,16 +3,18 @@ import React from "react";
 import { theme } from "Styles/theme";
 import { isMobile } from "react-device-detect";
 
-export default function CharacterSelector({
-  characters,
-  onCharacterSelect,
-  selectedCharacterId,
-}: {
-  characters: Character[];
-  onCharacterSelect: (characterId: number) => void;
+interface CharacterSelectorProps {
   selectedCharacterId: number;
-}) {
-  const DesktopCharacterSelector = () => {
+  onCharacterSelect: (characterId: number) => void;
+  characters: any[];
+}
+
+const DesktopCharacterSelector = React.memo(
+  ({
+    selectedCharacterId,
+    onCharacterSelect,
+    characters,
+  }: CharacterSelectorProps) => {
     return (
       <div style={{ display: "flex", width: "100%" }}>
         {characters.map((character) => {
@@ -29,7 +31,7 @@ export default function CharacterSelector({
                 width: isActive ? "100%" : "100px",
                 opacity: isActive ? "1" : ".75",
                 textAlign: "left",
-                transition: "all .3s",
+                transition: "width .3s",
                 display: "flex",
                 padding: theme.spacing.medium,
               }}
@@ -70,9 +72,15 @@ export default function CharacterSelector({
         })}
       </div>
     );
-  };
+  }
+);
 
-  const MobileCharacterSelector = () => {
+const MobileCharacterSelector = React.memo(
+  ({
+    selectedCharacterId,
+    onCharacterSelect,
+    characters,
+  }: CharacterSelectorProps) => {
     return (
       <div style={{ display: "flex", flexDirection: "column", width: "100%" }}>
         {characters.map((character) => {
@@ -117,7 +125,29 @@ export default function CharacterSelector({
         })}
       </div>
     );
-  };
+  }
+);
 
-  return isMobile ? <MobileCharacterSelector /> : <DesktopCharacterSelector />;
+export default function CharacterSelector({
+  characters,
+  onCharacterSelect,
+  selectedCharacterId,
+}: {
+  characters: Character[];
+  onCharacterSelect: (characterId: number) => void;
+  selectedCharacterId: number;
+}) {
+  return isMobile ? (
+    <MobileCharacterSelector
+      selectedCharacterId={selectedCharacterId}
+      onCharacterSelect={onCharacterSelect}
+      characters={characters}
+    />
+  ) : (
+    <DesktopCharacterSelector
+      selectedCharacterId={selectedCharacterId}
+      onCharacterSelect={onCharacterSelect}
+      characters={characters}
+    />
+  );
 }

@@ -1,7 +1,7 @@
 import CharacterSelector from "Components/Shared/CharacterSelector";
 import { motion } from "framer-motion";
 import MainAreaBase from "Pages/Home/Sections/MainAreaBase";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import QuestList from "./QuestList";
 
 export default function Quests({
@@ -19,6 +19,11 @@ export default function Quests({
 
   const [selectedCharacterId, setSelectedCharacterId] = useState(
     characters[0].id
+  );
+
+  const onCharacterSelect = useCallback(
+    (characterId) => setSelectedCharacterId(characterId),
+    [setSelectedCharacterId]
   );
 
   return (
@@ -41,9 +46,7 @@ export default function Quests({
         >
           <CharacterSelector
             characters={characters}
-            onCharacterSelect={(characterId) =>
-              setSelectedCharacterId(characterId)
-            }
+            onCharacterSelect={onCharacterSelect}
             selectedCharacterId={selectedCharacterId}
           />
           <br />

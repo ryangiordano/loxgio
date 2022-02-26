@@ -3,7 +3,7 @@ import SkillEquip from "Components/Skills/SkillEquip";
 import { motion } from "framer-motion";
 import { Flip } from "Lib/AnimationVariants";
 import MainAreaBase from "Pages/Home/Sections/MainAreaBase";
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 
 const Skills = ({
   setInfoText,
@@ -22,6 +22,13 @@ const Skills = ({
   const selectedCharacter = characters.find(
     (c) => selectedCharacterId === c.id
   );
+
+  const onCharacterSelect = useCallback(
+    (id) => {
+      setSelectedCharacterId(id);
+    },
+    [setSelectedCharacterId]
+  );
   return (
     <motion.div {...Flip}>
       <MainAreaBase>
@@ -29,9 +36,7 @@ const Skills = ({
           <CharacterSelector
             characters={characters}
             selectedCharacterId={selectedCharacterId}
-            onCharacterSelect={(id) => {
-              setSelectedCharacterId(id);
-            }}
+            onCharacterSelect={onCharacterSelect}
           />
 
           <SkillEquip selectedCharacter={selectedCharacter} />
