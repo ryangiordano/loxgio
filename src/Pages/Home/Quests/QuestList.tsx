@@ -2,10 +2,17 @@ import { ModalConsumer, ModalLayout } from "Components/Shared/Modal";
 import { motion } from "framer-motion";
 import React, { useState } from "react";
 import { theme } from "Styles/theme";
-import WriteIn from "Components/Shared/WriteIn";
 import { isMobile } from "react-device-detect";
+import QuestModal from "Components/Quests/QuestModal";
+import { SkillIcon } from "Patterns/SkillIcon";
 
-export default function QuestList({ title, description, characters }) {
+export default function QuestList({
+  quest,
+  characters,
+}: {
+  quest: Quest;
+  characters: Character[];
+}) {
   const [hovering, setHovering] = useState(false);
   const [focused, setFocused] = useState(false);
 
@@ -44,31 +51,14 @@ export default function QuestList({ title, description, characters }) {
                 textAlign: "left",
               }}
               onClick={() => {
-                openModal(
-                  <ModalLayout
-                    header={<>{title}</>}
-                    style={{
-                      width: isMobile ? null : "75vw",
-                    }}
-                  >
-                    <p
-                      className="long-form"
-                      style={isMobile ? { fontSize: theme.fontSize.small } : {}}
-                    >
-                      <WriteIn
-                        text={description}
-                        speedInMilliseconds={5}
-                      ></WriteIn>
-                    </p>
-                  </ModalLayout>
-                );
+                openModal(<QuestModal quest={quest} />);
               }}
               onMouseEnter={() => setHovering(true)}
               onFocus={() => setFocused(true)}
               onBlur={() => setFocused(false)}
               onMouseLeave={() => setHovering(false)}
             >
-              &#x3e; {title}{" "}
+              &#x3e; {quest.title}{" "}
               <span>
                 {characters.map((c) => (
                   <img

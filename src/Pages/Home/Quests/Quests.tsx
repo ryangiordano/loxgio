@@ -56,10 +56,9 @@ export default function Quests({
               return (
                 <QuestList
                   key={q.id}
-                  title={q.title}
-                  description={q.description}
-                  characters={q.characters.map((id) =>
-                    characters.find((c) => c.id === id)
+                  quest={q}
+                  characters={q.characters.map(
+                    (id) => characters.find((c) => c.id === id)!
                   )}
                 />
               );

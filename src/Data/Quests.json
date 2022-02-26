@@ -1,10 +1,32 @@
 {
+    "0": {
+        "id": 0,
+        "title": "Quora+ Subscriptions",
+        "links": [{
+            "url": "https://www.quora.com/quoraplus",
+            "text": "Quora+"
+        }],
+        "description": "Worked on the Monetization Team at Quora to introduce two different subscription features, allowing writers to monetize their content and grow a following. Further iterated on features, launching experiments to help improve adoption of the programs.",
+        "media": {
+            "alt": "",
+            "src": ""
+        },
+        "skills": [
+            1,
+            2,
+            13,
+            4,
+            6,
+            7
+        ],
+        "characters": [1]
+    },
     "1": {
         "id": 1,
         "title": "Quora Ads Manager",
         "links": [{
-            "url": "https://www.iiicareer.com",
-            "text": "Test"
+            "url": "https://www.quora.com/ads",
+            "text": "Ads Manager"
         }],
         "description": "Worked with designers and backend engineers to completely rewrite Quora's Ads Manager platform in React. The platform serves hundreds of advertisers generating thousands of ads responsible for driving millions in revenue for Quora.",
         "media": {
@@ -17,7 +39,7 @@
             13,
             4,
             6,
-            8
+            7
         ],
         "characters": [1]
     },
@@ -25,8 +47,8 @@
         "id": 2,
         "title": "Streaming Reaction Overlay",
         "links": [{
-            "url": "https://www.iiicareer.com",
-            "text": "Test"
+            "url": null,
+            "text": ""
         }],
         "description": "In order to improve remote first initiatives at Quora, I co-authored an app that allowed users to stream reactions from specific Slack channels on top of their video feed during company-wide meetings.",
         "media": {
@@ -45,7 +67,7 @@
         "title": "Humana Component Library",
         "links": [{
             "url": "https://www.humana.com",
-            "text": "Test"
+            "text": "Humana"
         }],
         "description": "Wrote accessible, reusable components using VueJS for use in building complex applications throughout Humana, serving millions of users. Accessibility was a huge priority, as the userbase was often elderly or differently abled, so rigorous testing to make sure components conformed to Web Content Accessibility Guidelines was undertaken.",
         "media": {
@@ -54,7 +76,7 @@
         },
         "skills": [
             10,
-            8, 12
+            8, 12, 27
         ],
         "characters": [1]
     },
@@ -100,10 +122,10 @@
         "id": 6,
         "title": "Digital Magazine Site",
         "links": [{
-            "url": "https://www.iiicareer.com",
-            "text": "Test"
+            "url": "http://www.iii-media.net/SAKURA/#",
+            "text": "Sakura"
         }],
-        "description": "I was tasked with updating a static HTML Japanese language Community Newspaper website, which required biweekly updates that took roughly three to four hours of time, from updating the HTML elements individually, to creating digital magazine issues. I saw that this process could be streamlined, and completely redesigned/recreated the website using AngularJS and Filemaker. I created a database and catelogged the data, then created a single page aplication that pulled the data from the database. I also added search and filter functionality by release month and year so that new visitors were able to keep up with events in the Japanese community.",
+        "description": "Streamlined, and completely redesigned/recreated Japanese language magazine site using AngularJS and Filemaker. Created a database and catelogged the data, then created a single page aplication that pulled the data from the database. Added search and filter functionality by release month and year so that new visitors were able to keep up with events in the Japanese community.",
         "media": {
             "alt": "",
             "src": ""
@@ -138,10 +160,10 @@
         "id": 8,
         "title": "Develop Kiosks for Credit Unions",
         "links": [{
-            "url": "https://www.iiicareer.com",
-            "text": "Test"
+            "url": null,
+            "text": ""
         }],
-        "description": "Created a series of interactive and informative displays for credit unions and large retailers and institutions. Kiosks were developed for iPads, iPad Pro, and large-format touch-panel devices.  Using GSAP, a JavaScript animation library, I transformed ordinary web-pages into a fluid experience.  Users were able to peruse data about the institution, mail themselves brochures and documents, and enter into branch-specific queues from the kiosk devices. I also developed interactive maps and layouts of the institutions the kiosks were housed in.",
+        "description": "Created a series of interactive and informative displays for banks. Kiosks were developed for iPads, iPad Pro, and large-format touch-panel devices. Users were able to peruse data about the institution, mail themselves brochures and documents, and enter into branch-specific queues from the kiosk devices. Developed interactive maps and layouts of the institutions the kiosks were housed in.",
         "media": {
             "alt": "",
             "src": ""
@@ -153,23 +175,7 @@
         ],
         "characters": [1]
     },
-    "9": {
-        "id": 9,
-        "title": "Web Feeds Parser with NodeJS",
-        "links": [{
-            "url": "https://www.iiicareer.com",
-            "text": "Test"
-        }],
-        "description": "Using NodeJS, I wrote a small application that received information about webfeeds, photos, and video files downloaded from the AP News Service, then created and served up a json file with news story summaries and links to associated media for display on digital signage products.",
-        "media": {
-            "alt": "",
-            "src": ""
-        },
-        "skills": [
-            5
-        ],
-        "characters": [1]
-    },
+
 
     "10": {
         "id": 10,

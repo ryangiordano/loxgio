@@ -13,7 +13,15 @@ export const PixelCard = ({
       style={{ ...style }}
     >
       {header && <div className="card-header">{header}</div>}
-      <div className="card-body xs-padding-thin">{children}</div>
+      <div
+        className="card-body xs-padding-thin"
+        style={{
+          maxHeight: "600px",
+          overflowY: "scroll",
+        }}
+      >
+        {children}
+      </div>
     </div>
   );
 };

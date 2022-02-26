@@ -84,7 +84,7 @@ export const ModalConsumer = (props) => {
   );
 };
 
-export const ModalLayout = ({ header, style = {}, children }) => {
+export const ModalLayout = ({ header, style = {}, children, footer }) => {
   const { closeModal } = useModal();
   return (
     <PixelCard
@@ -131,6 +131,7 @@ export const ModalLayout = ({ header, style = {}, children }) => {
       }
     >
       {children}
+      {footer}
     </PixelCard>
   );
 };

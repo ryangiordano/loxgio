@@ -10,6 +10,7 @@ export const SkillIcon = ({
   size = "70px",
   offsetX = 0,
   offsetY = 0,
+  bgColor,
 }: {
   name: string;
   src: string;
@@ -17,6 +18,7 @@ export const SkillIcon = ({
   size?: string;
   offsetX?: number;
   offsetY?: number;
+  bgColor?: string;
 }) => {
   return (
     <Popover
@@ -37,7 +39,7 @@ export const SkillIcon = ({
         style: {
           height: size,
           width: size,
-          backgroundColor: theme.backgroundColor.white,
+          backgroundColor: bgColor ?? theme.backgroundColor.white,
           padding: theme.spacing.tiny,
           transition: "all .2s",
           transformOrigin: "center center",
