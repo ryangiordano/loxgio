@@ -14,7 +14,7 @@ export const PixelCard = ({
     >
       {header && <div className="card-header">{header}</div>}
       <div
-        className="card-body xs-padding-thin"
+        className="card-body xs-padding-thin hide-scroll"
         style={{
           maxHeight: "600px",
           overflowY: "scroll",
