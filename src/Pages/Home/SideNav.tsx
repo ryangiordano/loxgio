@@ -78,7 +78,14 @@ const SideNav = () => {
     return (
       <nav style={{ display: "flex", justifyContent: "space-between" }}>
         {navItems.map((n) => {
-          return <MobileSideNavItem to={n.to} text={n.text} icon={n.icon} />;
+          return (
+            <MobileSideNavItem
+              key={n.text}
+              to={n.to}
+              text={n.text}
+              icon={n.icon}
+            />
+          );
         })}
         <MobileSideNavItem
           to={"/title"}
@@ -103,7 +110,7 @@ const SideNav = () => {
           }}
         >
           {navItems.map((n) => (
-            <DesktopNavItem to={n.to} text={n.text} />
+            <DesktopNavItem key={n.text} to={n.to} text={n.text} />
           ))}
           {isMobile ? null : <Divider />}
           <DesktopNavItem to={"/title"} text={"Title Screen"} last />
