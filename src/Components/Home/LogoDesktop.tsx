@@ -1,17 +1,8 @@
-import LogoMobile from "LogoMobile";
 import React from "react";
 import { theme } from "Styles/theme";
-import { isMobile } from "react-device-detect";
 
-const Logo = ({ boxRef, firstWordRef, secondWordRef, thirdWordRef }) => {
-  return isMobile ? (
-    <LogoMobile
-      boxRef={boxRef}
-      firstWordRef={firstWordRef}
-      secondWordRef={secondWordRef}
-      thirdWordRef={thirdWordRef}
-    />
-  ) : (
+function LogoDesktop({ boxRef, firstWordRef, secondWordRef, thirdWordRef }) {
+  return (
     <div>
       <svg
         x="0px"
@@ -132,5 +123,5 @@ const Logo = ({ boxRef, firstWordRef, secondWordRef, thirdWordRef }) => {
       </svg>
     </div>
   );
-};
-export default Logo;
+}
+export default React.memo(LogoDesktop);

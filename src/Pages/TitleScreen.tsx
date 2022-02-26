@@ -1,10 +1,19 @@
-import Logo from "Components/Shared/Logo";
+import Logo from "Components/Home/Logo";
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 import { theme } from "Styles/theme";
 import anime from "animejs";
 import { isMobile } from "react-device-detect";
-const TitleScreen = (props) => {
+const TitleScreen = () => {
+  const history = useHistory();
+  const navigate = React.useCallback(() => history.push("/home"), [history]);
+  React.useEffect(() => {
+    document.addEventListener("keydown", navigate);
+    return () => {
+      document.removeEventListener("keydown", navigate);
+    };
+  });
+
   React.useEffect(() => {
     const tl = anime.timeline();
     [
