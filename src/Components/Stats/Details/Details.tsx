@@ -140,12 +140,14 @@ const Details = ({ setInfoText, match }) => {
         </>
       </MainAreaBase>
 
-      <MainAreaBase style={{ marginTop: theme.spacing.giant }}>
+      <MainAreaBase style={{ marginTop: theme.spacing.giant, padding: 0 }}>
         <NavLink
           to={"/home/stats"}
           style={{
             color: "white",
             textDecoration: "none",
+            display: "block",
+            padding: theme.spacing.large,
           }}
         >
           &#x3c; Back
