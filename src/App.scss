@@ -80,6 +80,10 @@ p.long-form {
   transition: opacity 250ms ease-in;
 }
 
+html,
+body {
+  overscroll-behavior-y: none;
+}
 
 /* Hide scrollbar for Chrome, Safari and Opera */
 .hide-scroll::-webkit-scrollbar {

@@ -1,18 +1,21 @@
 import { AnimatePresence, motion } from "framer-motion";
 import debounce from "lodash/debounce";
 import React from "react";
-import { NavLink, useLocation } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 import { theme } from "Styles/theme";
 
 function MobileSideNavButton({
   children,
   active,
+  onClick,
 }: {
   children: React.ReactNode;
   active: boolean;
+  onClick?: () => void;
 }) {
   return (
-    <div
+    <button
+      type="button"
       className="pixel-panel"
       style={{
         padding: theme.spacing.giant,
@@ -20,32 +23,30 @@ function MobileSideNavButton({
         width: "20%",
         backgroundColor: active ? theme.backgroundColor.green : undefined,
       }}
+      onClick={onClick}
     >
       {children}
-    </div>
+    </button>
   );
 }
 
 const MobileSideNavItem = ({ to, text, icon }) => {
   const l = useLocation();
   const active = l.pathname.includes(to);
+  const history = useHistory();
+
   return (
-    <MobileSideNavButton active={active}>
-      <NavLink
-        to={to}
-        style={{
-          color: theme.backgroundColor.white,
-          textDecoration: "none",
-          display: "flex",
-          alignItems: "center",
-        }}
-      >
-        <img
-          aria-label={text}
-          src={`/images/${icon}`}
-          style={{ height: "25px", marginLeft: "auto", marginRight: "auto" }}
-        />
-      </NavLink>
+    <MobileSideNavButton
+      active={active}
+      onClick={() => {
+        history.push(to);
+      }}
+    >
+      <img
+        aria-label={text}
+        src={`/images/${icon}`}
+        style={{ height: "25px", marginLeft: "auto", marginRight: "auto" }}
+      />
     </MobileSideNavButton>
   );
 };
@@ -56,7 +57,6 @@ const MobileSideNavItem = ({ to, text, icon }) => {
  */
 function useMobileSideNav() {
   const [extended, setExtended] = React.useState(false);
-
   const onScroll = React.useCallback(
     debounce(
       () =>
@@ -73,7 +73,10 @@ function useMobileSideNav() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  return { extended, setExtended };
+  return {
+    extended: extended,
+    setExtended,
+  };
 }
 
 export default function MobileSideNav({
@@ -83,7 +86,12 @@ export default function MobileSideNav({
 }) {
   const { extended, setExtended } = useMobileSideNav();
   return (
-    <nav style={{ display: "flex", justifyContent: "space-between" }}>
+    <nav
+      style={{
+        display: "flex",
+        justifyContent: "space-between",
+      }}
+    >
       {extended ? (
         <motion.div
           variants={{
@@ -122,24 +130,21 @@ export default function MobileSideNav({
           />
         </motion.div>
       ) : (
-        <MobileSideNavButton active={false}>
-          <button
-            className="button-reset"
-            type="button"
-            onClick={() => {
-              setExtended(!extended);
+        <MobileSideNavButton
+          active={false}
+          onClick={() => {
+            setExtended(!extended);
+          }}
+        >
+          <img
+            aria-label={"Extend menu"}
+            src={`/images/catshape-daruma-nav.png`}
+            style={{
+              height: "25px",
+              marginLeft: "auto",
+              marginRight: "auto",
             }}
-          >
-            <img
-              aria-label={"Extend menu"}
-              src={`/images/catshape-daruma-nav.png`}
-              style={{
-                height: "25px",
-                marginLeft: "auto",
-                marginRight: "auto",
-              }}
-            />
-          </button>
+          />
         </MobileSideNavButton>
       )}
     </nav>

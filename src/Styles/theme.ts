@@ -6,6 +6,7 @@ export const theme = {
     darkGreen: "#355e51",
     red: "#ff777a",
     blue: "#778eff",
+    black: "#1F1F1F",
   },
   spacing: {
     tiny: "3px",
