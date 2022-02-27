@@ -15,10 +15,10 @@ import { isMobile } from "react-device-detect";
 import AnimatedWatermark from "Components/Shared/AnimatedWatermark";
 
 const GridContainer = ({ children }) => {
-  return <div className="container">{children}</div>;
+  return <div className="container" style={{minHeight:"100vh"}}>{children}</div>;
 };
 
-const obj = {
+const animationConfig = {
   initial: {
     opacity: 0,
   },
@@ -40,7 +40,7 @@ const Home = ({ match }) => {
       <CharacterState>
         {({ characters }) => (
           <GridContainer>
-            <motion.div {...obj}>
+            <motion.div {...animationConfig}>
               <InfoBox
                 infoText={infoText}
                 style={{
@@ -48,14 +48,15 @@ const Home = ({ match }) => {
                 }}
               />
               <div className={isMobile ? undefined : "d-flex"}>
-                <div
-                  style={{
-                    marginRight: isMobile ? undefined : theme.spacing.large,
-                    marginBottom: isMobile ? theme.spacing.giant : undefined,
-                  }}
-                >
-                  <SideNav />
-                </div>
+                {!isMobile ? (
+                  <div
+                    style={{
+                      marginRight: theme.spacing.large,
+                    }}
+                  >
+                    <SideNav />
+                  </div>
+                ) : undefined}
                 <div style={{ flexGrow: 1 }}>
                   <Route
                     exact
@@ -101,6 +102,18 @@ const Home = ({ match }) => {
           </GridContainer>
         )}
       </CharacterState>
+      {isMobile ? (
+        <div
+          style={{
+            position: "sticky",
+            bottom: 0,
+            width: "100%",
+            padding: `${theme.spacing.medium} ${theme.spacing.giant}`,
+          }}
+        >
+          <SideNav />
+        </div>
+      ) : undefined}
     </>
   );
 };
