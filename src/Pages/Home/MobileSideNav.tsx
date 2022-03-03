@@ -1,4 +1,4 @@
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import debounce from "lodash/debounce";
 import React from "react";
 import { useHistory, useLocation } from "react-router-dom";
@@ -71,7 +71,7 @@ function useMobileSideNav() {
   React.useEffect(() => {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  }, [onScroll]);
 
   return {
     extended: extended,

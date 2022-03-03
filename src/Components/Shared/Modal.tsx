@@ -93,6 +93,7 @@ export const ModalLayout = ({ header, style = {}, children, footer }) => {
         margin: theme.spacing.large,
         paddingBottom: theme.spacing.large,
         ...style,
+        maxWidth: isMobile ? undefined: "800px"
       }}
       header={
         <>
