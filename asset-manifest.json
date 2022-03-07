@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/loxgio/static/css/main.5ff1677b.css",
+    "main.js": "/loxgio/static/js/main.199a45f1.js",
+    "index.html": "/loxgio/index.html",
+    "main.5ff1677b.css.map": "/loxgio/static/css/main.5ff1677b.css.map",
+    "main.199a45f1.js.map": "/loxgio/static/js/main.199a45f1.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.5ff1677b.css",
+    "static/js/main.199a45f1.js"
+  ]
+}
