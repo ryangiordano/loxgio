@@ -8,9 +8,9 @@ const Routes = withRouter(({ location }) => {
   return (
     <AnimatePresence exitBeforeEnter>
       <Switch>
-        <Route path="/" exact component={TitleScreen} />
-        <Route path="/title" exact component={TitleScreen} />
-        <Route path="/home" component={Home} />
+        <Route path="/loxgio" exact component={TitleScreen} />
+        <Route path="/loxgio/title" exact component={TitleScreen} />
+        <Route path="/loxgio/home" component={Home} />
       </Switch>
     </AnimatePresence>
   );
