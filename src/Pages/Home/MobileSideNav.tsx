@@ -57,6 +57,7 @@ const MobileSideNavItem = ({ to, text, icon }) => {
  */
 function useMobileSideNav() {
   const [extended, setExtended] = React.useState(false);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const onScroll = React.useCallback(
     debounce(
       () =>
